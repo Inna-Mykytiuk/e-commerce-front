@@ -4,10 +4,9 @@ import { registerFormControls } from "@/config";
 import CommonForm from "@/components/common/form";
 
 const initialState = {
-  name: "",
+  userName: "",
   email: "",
   password: "",
-  password2: "",
 };
 
 function AuthRegister() {
