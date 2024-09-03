@@ -1,5 +1,6 @@
-
+import { useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 import './App.css';
 import NotFound from './pages/not-found';
 
@@ -13,18 +14,29 @@ import AdminOrders from './pages/admin-view/orders';
 import AdminFeatures from './pages/admin-view/features';
 
 import ShoppingLayout from './components/shopping-view/layout';
+import CheckAuth from './components/common/check-auth';
 import ShoppingHome from './pages/shopping-view/home';
 import ShoppingListing from './pages/shopping-view/listing';
 import ShoppingAccount from './pages/shopping-view/account';
 import ShoppingCheckout from './pages/shopping-view/checkout';
-import CheckAuth from './components/common/check-auth';
 import UnauthPage from './pages/unauth-page';
 
+import { checkAuth } from "./store/auth-slice";
+
+import { Skeleton } from "@/components/ui/skeleton"
+
+
 function App() {
-  const isAuthenticated = false;
-  const user = null;
+  const { user, isAuthenticated, isLoading } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
 
+  if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
 
   return (
     <Routes>
