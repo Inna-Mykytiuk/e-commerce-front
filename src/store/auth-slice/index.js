@@ -1,22 +1,27 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from 'axios';
+import axios from "axios";
 
 const initialState = {
   isAuthenticated: false,
-  isLoading: false,
-  user: null
-}
+  isLoading: true,
+  user: null,
+};
 
-export const registerUser = createAsyncThunk('/auth/register',
+export const registerUser = createAsyncThunk(
+  "/auth/register",
+
   async (formData) => {
     const response = await axios.post(
-      'http://localhost:5000/api/auth/register',
-      formData, {
-      withCredentials: true,
-    })
+      "http://localhost:5000/api/auth/register",
+      formData,
+      {
+        withCredentials: true,
+      }
+    );
 
     return response.data;
-  })
+  }
+);
 
 export const loginUser = createAsyncThunk(
   "/auth/login",
@@ -70,22 +75,22 @@ export const checkAuth = createAsyncThunk(
 );
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
-    setUser: () => { },
+    setUser: (state, action) => { },
   },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(registerUser.fulfilled, (state) => {
+      .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = null;
         state.isAuthenticated = false;
       })
-      .addCase(registerUser.rejected, (state) => {
+      .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
         state.user = null;
         state.isAuthenticated = false;
@@ -100,7 +105,7 @@ const authSlice = createSlice({
         state.user = action.payload.success ? action.payload.user : null;
         state.isAuthenticated = action.payload.success;
       })
-      .addCase(loginUser.rejected, (state) => {
+      .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
         state.user = null;
         state.isAuthenticated = false;
@@ -113,19 +118,18 @@ const authSlice = createSlice({
         state.user = action.payload.success ? action.payload.user : null;
         state.isAuthenticated = action.payload.success;
       })
-      .addCase(checkAuth.rejected, (state) => {
+      .addCase(checkAuth.rejected, (state, action) => {
         state.isLoading = false;
         state.user = null;
         state.isAuthenticated = false;
       })
-      .addCase(logoutUser.fulfilled, (state) => {
+      .addCase(logoutUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = null;
         state.isAuthenticated = false;
       });
-  }
-})
+  },
+});
 
 export const { setUser } = authSlice.actions;
-
-export default authSlice.reducer
+export default authSlice.reducer;
