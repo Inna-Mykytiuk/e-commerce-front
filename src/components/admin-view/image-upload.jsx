@@ -81,7 +81,9 @@ function ProductImageUpload({
           type="file"
           className="hidden"
           ref={inputRef}
-          onChange={handleImageFileChange} />
+          onChange={handleImageFileChange}
+          disabled={isEditMode}
+        />
         {!imageFile ? (
           <Label
             htmlFor="image-upload"
