@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './App.css';
 import NotFound from './pages/not-found';
@@ -40,6 +40,7 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/auth/register" />} />
       <Route path="/auth" element={
         <CheckAuth isAuthenticated={isAuthenticated} user={user}>
           <AuthLayout />
