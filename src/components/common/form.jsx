@@ -41,7 +41,7 @@ function CommonForm({ formControls, formData, setFormData, onSubmit, isBtnDisabl
             value={value}
             onValueChange={(value) => setFormData({ ...formData, [getControlItem.name]: value })}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder={getControlItem.placeholder} />
+              <SelectValue placeholder={getControlItem.label} />
             </SelectTrigger>
             <SelectContent>
               {getControlItem.options && getControlItem.options.length > 0
