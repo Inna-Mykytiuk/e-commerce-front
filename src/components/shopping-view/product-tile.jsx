@@ -12,7 +12,7 @@ function ShoppingProductTile({
 }) {
   // console.log(product, "product");
   return (
-    <Card className="w-full max-w-sm mx-auto">
+    <Card className="w-full max-w-sm mx-auto cursor-pointer">
       <div onClick={() => handleGetProductDetails(product?._id)}>
         <div className="relative">
           <img
@@ -81,14 +81,15 @@ ShoppingProductTile.propTypes = {
     _id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    totalStock: PropTypes.number.isRequired,
+    totalStock: PropTypes.number,
     salePrice: PropTypes.number,
-    price: PropTypes.number.isRequired,
+    price: PropTypes.number,
     category: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
   }).isRequired,
   handleGetProductDetails: PropTypes.func.isRequired,
-  handleAddtoCart: PropTypes.func.isRequired,
+  // handleAddtoCart: PropTypes.func.isRequired,
+  handleAddtoCart: PropTypes.func,
 };
 
 export default ShoppingProductTile;

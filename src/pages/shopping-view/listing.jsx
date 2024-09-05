@@ -1,5 +1,5 @@
 import ProductFilter from "@/components/shopping-view/filter";
-// import ProductDetailsDialog from "@/components/shopping-view/product-details";
+import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import ShoppingProductTile from "@/components/shopping-view/product-tile";
 import { Button } from "@/components/ui/button";
 import {
@@ -188,7 +188,7 @@ function ShoppingListing() {
           {productList && productList.length > 0
             ? productList.map((productItem) => (
               <ShoppingProductTile
-                key={productItem.id}
+                key={productItem.id || productItem._id}
                 handleGetProductDetails={handleGetProductDetails}
                 product={productItem}
               // handleAddtoCart={handleAddtoCart}
@@ -197,11 +197,11 @@ function ShoppingListing() {
             : null}
         </div>
       </div>
-      {/* <ProductDetailsDialog
+      <ProductDetailsDialog
         open={openDetailsDialog}
         setOpen={setOpenDetailsDialog}
         productDetails={productDetails}
-      /> */}
+      />
     </div>
   );
 }
