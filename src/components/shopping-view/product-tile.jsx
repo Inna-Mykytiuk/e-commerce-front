@@ -10,7 +10,7 @@ function ShoppingProductTile({
   handleGetProductDetails,
   handleAddtoCart,
 }) {
-  console.log(product, "product");
+  // console.log(product, "product");
   return (
     <Card className="w-full max-w-sm mx-auto">
       <div onClick={() => handleGetProductDetails(product?._id)}>
@@ -28,11 +28,12 @@ function ShoppingProductTile({
             <Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">
               {`Only ${product?.totalStock} items left`}
             </Badge>
-          ) : product?.salePrice > 0 ? (
-            <Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">
-              Sale
-            </Badge>
           ) : null}
+
+          {product?.price > 0 ? (<Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">
+            Sale
+          </Badge>)
+            : ""}
         </div>
         <CardContent className="p-4">
           <h2 className="text-xl font-bold mb-2">{product?.title}</h2>
