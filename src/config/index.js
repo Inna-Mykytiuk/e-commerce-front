@@ -153,12 +153,12 @@ export const categoryOptionsMap = {
 };
 
 export const brandOptionsMap = {
-  nike: "Nike",
   adidas: "Adidas",
-  puma: "Puma",
-  levi: "Levi",
-  zara: "Zara",
   "h&m": "H&M",
+  levi: "Levi",
+  nike: "Nike",
+  puma: "Puma",
+  zara: "Zara",
 };
 
 export const filterOptions = {
@@ -170,12 +170,12 @@ export const filterOptions = {
     { id: "footwear", label: "Footwear" },
   ],
   brand: [
-    { id: "nike", label: "Nike" },
     { id: "adidas", label: "Adidas" },
-    { id: "puma", label: "Puma" },
-    { id: "levi", label: "Levi's" },
-    { id: "zara", label: "Zara" },
     { id: "h&m", label: "H&M" },
+    { id: "levi", label: "Levi's" },
+    { id: "nike", label: "Nike" },
+    { id: "puma", label: "Puma" },
+    { id: "zara", label: "Zara" },
   ],
 };
 
