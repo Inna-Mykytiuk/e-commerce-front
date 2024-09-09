@@ -24,7 +24,8 @@ import { Sheet, SheetTrigger, SheetContent, SheetDescription, SheetTitle } from 
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { logoutUser } from "@/store/auth-slice";
-// import { fetchCartItems } from "@/store/shop-cart-slice";
+import { fetchCartItems } from "@/store/shop/cart-slice";
+import UserCartWrapper from "./cart-wrapper";
 
 function MenuItems() {
   return (
@@ -45,7 +46,7 @@ function MenuItems() {
 
 function HeaderRightContent() {
   const { user } = useSelector((state) => state.auth);
-  // const { cartItems } = useSelector((state) => state.shopCart);
+  const { cartItems } = useSelector((state) => state.shopCart);
   const [openCartSheet, setOpenCartSheet] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -54,36 +55,41 @@ function HeaderRightContent() {
     dispatch(logoutUser());
   }
 
-  // useEffect(() => {
-  //   dispatch(fetchCartItems(user?.id));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchCartItems(user?.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
-  // console.log(cartItems, "cartItems");
+  console.log(cartItems, "cartItems");
 
   return (
     <div className="flex lg:items-center flex-row gap-4">
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
         <Button
-          // onClick={() => setOpenCartSheet(true)}
+          onClick={(event) => {
+            setOpenCartSheet(true);
+            event.currentTarget.blur();
+          }}
           variant="outline"
           size="icon"
           className="relative"
+
+          aria-hidden="false"
         >
           <ShoppingCart className="w-6 h-6" />
           <span className="absolute top-[-5px] right-[2px] font-bold text-sm">
-            {/* {cartItems?.items?.length || 0} */}
+            {cartItems?.items?.length || 0}
           </span>
           <span className="sr-only">User cart</span>
         </Button>
-        {/* <UserCartWrapper
+        <UserCartWrapper
           setOpenCartSheet={setOpenCartSheet}
           cartItems={
             cartItems && cartItems.items && cartItems.items.length > 0
               ? cartItems.items
               : []
           }
-        /> */}
+        />
       </Sheet>
 
       <DropdownMenu>
@@ -110,8 +116,7 @@ function HeaderRightContent() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-
-    </div>
+    </div >
   )
 }
 
