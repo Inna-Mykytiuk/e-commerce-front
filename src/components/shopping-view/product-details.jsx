@@ -52,7 +52,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
                 ${productDetails?.salePrice}
               </p>
             ) : null} */}
-            <span
+            {/* <span
               className={`${productDetails?.salePrice > 0 ? "line-through" : ""} text-3xl font-bold text-primary text-start`}
             >
               {productDetails?.price ? `$${productDetails?.price}` : ""}
@@ -60,7 +60,17 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
             {productDetails?.salePrice > 0 ? (
               <span className="text-2xl font-bold text-muted-foreground">${productDetails?.salePrice}
               </span>
+            ) : null} */}
+
+
+            {productDetails?.salePrice > 0 ? (
+              <span className={`${productDetails?.salePrice > 0 ? "line-through" : ""} text-2xl font-bold text-primary text-start`}>${productDetails?.salePrice}</span>
             ) : null}
+            <span
+              className="text-2xl font-bold text-muted-foreground"
+            >
+              {productDetails?.price ? `$${productDetails?.price}` : ""}
+            </span>
           </div>
           <div className="flex items-center gap-2 mt-2">
             <div className="flex items-center gap-0.5">
