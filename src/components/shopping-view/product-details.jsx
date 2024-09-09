@@ -36,7 +36,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
             <h1 className="text-3xl font-extrabold">
               {productDetails?.title}
             </h1>
-            <p className="text-muted-foreground text-2xl mb-5 mt-4">
+            <p className="text-muted-foreground text-[16px] mb-5 mt-4">
               {productDetails?.description}
             </p>
           </div>
@@ -107,11 +107,11 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
                 </div>
                 <div className="flex items-center gap-0.5">
                   {/* <StarRatingComponent rating={reviewItem?.reviewValue} /> */}
-                  <StarIcon className="w-5 g-6 fill-primary" />
-                  <StarIcon className="w-5 g-6 fill-primary" />
-                  <StarIcon className="w-5 g-6 fill-primary" />
-                  <StarIcon className="w-5 g-6 fill-primary" />
-                  <StarIcon className="w-5 g-6 fill-primary" />
+                  <StarIcon className="w-4 h-4 fill-primary" />
+                  <StarIcon className="w-4 h-4 fill-primary" />
+                  <StarIcon className="w-4 h-4 fill-primary" />
+                  <StarIcon className="w-4 h-4 fill-primary" />
+                  <StarIcon className="w-4 h-4 fill-primary" />
                   <span className="text-muted-foreground">(4.5)</span>
                 </div>
                 <p className="text-muted-foreground">
@@ -151,11 +151,11 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
                   rating={rating}
                   handleRatingChange={handleRatingChange}
                 /> */}
-                <StarIcon className="w-5 g-6 fill-primary" />
-                <StarIcon className="w-5 g-6 fill-primary" />
-                <StarIcon className="w-5 g-6 fill-primary" />
-                <StarIcon className="w-5 g-6 fill-primary" />
-                <StarIcon className="w-5 g-6 fill-primary" />
+                <StarIcon className="w-4 h-4 fill-primary" />
+                <StarIcon className="w-4 h-4 fill-primary" />
+                <StarIcon className="w-4 h-4 fill-primary" />
+                <StarIcon className="w-4 h-4 fill-primary" />
+                <StarIcon className="w-4 h-4 fill-primary" />
 
               </div>
               <div className="flex gap-4">

@@ -40,7 +40,7 @@ function App() {
 
   return (
     <Routes>
-      {/* <Route path="/" element={<Navigate to="/auth/register" />} /> */}
+      <Route path="/" element={<Navigate to="/auth/register" />} />
       <Route path="/auth" element={
         <CheckAuth isAuthenticated={isAuthenticated} user={user}>
           <AuthLayout />
