@@ -60,11 +60,17 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     });
   }
 
+  function handleDialogClose() {
+    setOpen(false);
+    dispatch(setProductDetails());
+    // setRating(0);
+    // setReviewMsg("");
+  }
+
   return (
     <Dialog
       open={open}
-      onOpenChange={setOpen}
-    // onOpenChange={handleDialogClose}
+      onOpenChange={handleDialogClose}
     >
       <DialogContent className="grid grid-cols-2 gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw]" aria-describedby={undefined}>
         <div className="relative overflow-hidden rounded-lg">

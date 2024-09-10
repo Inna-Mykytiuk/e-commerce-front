@@ -28,12 +28,11 @@ function ShoppingProductTile({
             <Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">
               {`Only ${product?.totalStock} items left`}
             </Badge>
+          ) : product?.salePrice > 0 ? (
+            <Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">
+              Sale
+            </Badge>
           ) : null}
-
-          {product?.salePrice > 0 ? (<Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">
-            Sale
-          </Badge>)
-            : ""}
         </div>
         <CardContent className="p-4">
           <h2 className="text-xl font-bold mb-2">{product?.title}</h2>
