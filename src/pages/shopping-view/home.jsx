@@ -53,6 +53,7 @@ const slides = [
 ]
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [visibleProducts, setVisibleProducts] = useState(8);
   const { productList, productDetails } = useSelector(
     (state) => state.shopProducts
   );
@@ -132,6 +133,10 @@ function ShoppingHome() {
   // useEffect(() => {
   //   dispatch(getFeatureImages());
   // }, [dispatch]);
+
+  const handleLoadMore = () => {
+    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 8);
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -247,18 +252,41 @@ function ShoppingHome() {
           <h2 className="text-3xl font-bold text-center mb-8">
             Feature Products
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {productList && productList.length > 0
               ? productList.map((productItem) => (
                 <ShoppingProductTile
                   key={productItem.id}
-                  // handleGetProductDetails={handleGetProductDetails}
                   product={productItem}
+                  // handleGetProductDetails={handleGetProductDetails}
                 // handleAddtoCart={handleAddtoCart}
                 />
               ))
               : null}
+          </div> */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {productList && productList.length > 0
+              ? productList.slice(0, visibleProducts).map((productItem) => (
+                <ShoppingProductTile
+                  key={productItem.id}
+                  product={productItem}
+                // handleGetProductDetails={handleGetProductDetails}
+                // handleAddtoCart={handleAddtoCart}
+                />
+              ))
+              : <p>No products available.</p>}
           </div>
+          {visibleProducts < productList.length && (
+            <div className="text-center mt-8">
+              <Button
+                variant="outline"
+                className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 hover:text-white"
+                onClick={handleLoadMore}
+              >
+                Load More
+              </Button>
+            </div>
+          )}
         </div>
       </section>
       {/* <ProductDetailsDialog
