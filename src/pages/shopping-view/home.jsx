@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import bannerOne from "../../assets/banner-1.webp";
-import bannerTwo from "../../assets/banner-2.webp";
-import bannerThree from "../../assets/banner-3.webp";
+import bannerOne from "../../assets/banner-11.webp";
+import bannerTwo from "../../assets/banner-22.webp";
+import bannerThree from "../../assets/banner-33.webp";
 import {
   Airplay,
   BabyIcon,
@@ -49,7 +49,18 @@ const brandsWithIcon = [
 ];
 
 const slides = [
-  bannerOne, bannerTwo, bannerThree
+  {
+    id: 1,
+    image: bannerOne,
+  },
+  {
+    id: 2,
+    image: bannerTwo,
+  },
+  {
+    id: 3,
+    image: bannerThree,
+  }
 ]
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -59,13 +70,13 @@ function ShoppingHome() {
   );
   // const { featureImageList } = useSelector((state) => state.commonFeature);
 
-  // const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
+  const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
 
-  // const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const { toast } = useToast();
+  const { toast } = useToast();
 
   function handleNavigateToListingPage(getCurrentItem, section) {
     sessionStorage.removeItem("filters");
@@ -77,30 +88,30 @@ function ShoppingHome() {
     navigate(`/shop/listing`);
   }
 
-  // function handleGetProductDetails(getCurrentProductId) {
-  //   dispatch(fetchProductDetails(getCurrentProductId));
-  // }
+  function handleGetProductDetails(getCurrentProductId) {
+    dispatch(fetchProductDetails(getCurrentProductId));
+  }
 
-  // function handleAddtoCart(getCurrentProductId) {
-  //   dispatch(
-  //     addToCart({
-  //       userId: user?.id,
-  //       productId: getCurrentProductId,
-  //       quantity: 1,
-  //     })
-  //   ).then((data) => {
-  //     if (data?.payload?.success) {
-  //       dispatch(fetchCartItems(user?.id));
-  //       toast({
-  //         title: "Product is added to cart",
-  //       });
-  //     }
-  //   });
-  // }
+  function handleAddtoCart(getCurrentProductId) {
+    dispatch(
+      addToCart({
+        userId: user?.id,
+        productId: getCurrentProductId,
+        quantity: 1,
+      })
+    ).then((data) => {
+      if (data?.payload?.success) {
+        dispatch(fetchCartItems(user?.id));
+        toast({
+          title: "Product is added to cart",
+        });
+      }
+    });
+  }
 
-  // useEffect(() => {
-  //   if (productDetails !== null) setOpenDetailsDialog(true);
-  // }, [productDetails]);
+  useEffect(() => {
+    if (productDetails !== null) setOpenDetailsDialog(true);
+  }, [productDetails]);
 
   // useEffect(() => {
   //   const timer = setInterval(() => {
@@ -128,7 +139,7 @@ function ShoppingHome() {
     );
   }, [dispatch]);
 
-  console.log(productList, "productList");
+  // console.log(productList, "productList");
 
   // useEffect(() => {
   //   dispatch(getFeatureImages());
@@ -152,11 +163,11 @@ function ShoppingHome() {
           ))
           : null} */}
         {
-          slides.map((slide, index) => (
+          slides.map((slide, id) => (
             <img
-              src={slide}
-              key={index}
-              className={`${index === currentSlide ? "opacity-100" : "opacity-0"
+              src={slide.image}
+              key={id}
+              className={`${id === currentSlide ? "opacity-100" : "opacity-0"
                 } absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000`} />
           ))
         }
@@ -268,10 +279,10 @@ function ShoppingHome() {
             {productList && productList.length > 0
               ? productList.slice(0, visibleProducts).map((productItem) => (
                 <ShoppingProductTile
-                  key={productItem.id}
+                  key={productItem._id}
                   product={productItem}
-                // handleGetProductDetails={handleGetProductDetails}
-                // handleAddtoCart={handleAddtoCart}
+                  handleGetProductDetails={handleGetProductDetails}
+                  handleAddtoCart={handleAddtoCart}
                 />
               ))
               : <p>No products available.</p>}
@@ -289,11 +300,11 @@ function ShoppingHome() {
           )}
         </div>
       </section>
-      {/* <ProductDetailsDialog
+      <ProductDetailsDialog
         open={openDetailsDialog}
         setOpen={setOpenDetailsDialog}
         productDetails={productDetails}
-      /> */}
+      />
     </div>
   );
 }
