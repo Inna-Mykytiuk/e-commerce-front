@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import ShoppingOrderDetailsView from "./order-details";
+// import ShoppingOrderDetailsView from "./order-details";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllOrdersByUserId,
@@ -41,7 +41,7 @@ function ShoppingOrders() {
   console.log(orderDetails, "orderDetails");
 
   return (
-    <Card>
+    <Card className="border-none">
       <CardHeader>
         <CardTitle>Order History</CardTitle>
       </CardHeader>
