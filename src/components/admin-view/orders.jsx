@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-// import AdminOrderDetailsView from "./order-details";
+import AdminOrderDetailsView from "./order-details";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllOrdersForAdmin,
@@ -90,7 +90,7 @@ function AdminOrdersView() {
                       >
                         View Details
                       </Button>
-                      {/* <AdminOrderDetailsView orderDetails={orderDetails} /> */}
+                      <AdminOrderDetailsView orderDetails={orderDetails} />
                     </Dialog>
                   </TableCell>
                 </TableRow>
