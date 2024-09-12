@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { useSelector } from "react-redux";
 import { Badge } from "../ui/badge";
 import { DialogContent } from "../ui/dialog";
@@ -54,7 +56,9 @@ function ShoppingOrderDetailsView({ orderDetails }) {
             <ul className="grid gap-3">
               {orderDetails?.cartItems && orderDetails?.cartItems.length > 0
                 ? orderDetails?.cartItems.map((item) => (
-                  <li className="flex items-center justify-between">
+                  <li
+                    key={item._id}
+                    className="flex items-center justify-between">
                     <span>Title: {item.title}</span>
                     <span>Quantity: {item.quantity}</span>
                     <span>Price: ${item.price}</span>
@@ -81,5 +85,31 @@ function ShoppingOrderDetailsView({ orderDetails }) {
     </DialogContent>
   );
 }
+
+ShoppingOrderDetailsView.propTypes = {
+  orderDetails: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    orderDate: PropTypes.string.isRequired,
+    totalAmount: PropTypes.number.isRequired,
+    paymentMethod: PropTypes.string.isRequired,
+    paymentStatus: PropTypes.string.isRequired,
+    orderStatus: PropTypes.string.isRequired,
+    cartItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        quantity: PropTypes.number.isRequired,
+        price: PropTypes.number.isRequired,
+      })
+    ).isRequired,
+    addressInfo: PropTypes.shape({
+      address: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      pincode: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      notes: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default ShoppingOrderDetailsView;

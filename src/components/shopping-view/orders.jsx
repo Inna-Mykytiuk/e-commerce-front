@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-// import ShoppingOrderDetailsView from "./order-details";
+import ShoppingOrderDetailsView from "./order-details";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllOrdersByUserId,
@@ -92,7 +92,7 @@ function ShoppingOrders() {
                       >
                         View Details
                       </Button>
-                      {/* <ShoppingOrderDetailsView orderDetails={orderDetails} /> */}
+                      <ShoppingOrderDetailsView orderDetails={orderDetails} />
                     </Dialog>
                   </TableCell>
                 </TableRow>
