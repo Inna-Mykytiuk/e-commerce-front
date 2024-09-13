@@ -29,7 +29,7 @@ import { useNavigate } from "react-router-dom";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import { useToast } from "@/components/ui/use-toast";
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
-// import { getFeatureImages } from "@/store/common-slice";
+import { getFeatureImages } from "@/store/common-slice";
 
 const categoriesWithIcon = [
   { id: "men", label: "Men", icon: ShirtIcon },
@@ -48,27 +48,14 @@ const brandsWithIcon = [
   { id: "h&m", label: "H&M", icon: Heater },
 ];
 
-const slides = [
-  {
-    id: 1,
-    image: bannerOne,
-  },
-  {
-    id: 2,
-    image: bannerTwo,
-  },
-  {
-    id: 3,
-    image: bannerThree,
-  }
-]
+
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleProducts, setVisibleProducts] = useState(8);
   const { productList, productDetails } = useSelector(
     (state) => state.shopProducts
   );
-  // const { featureImageList } = useSelector((state) => state.commonFeature);
+  const { featureImageList } = useSelector((state) => state.commonFeature);
 
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
 
@@ -113,22 +100,14 @@ function ShoppingHome() {
     if (productDetails !== null) setOpenDetailsDialog(true);
   }, [productDetails]);
 
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCurrentSlide((prevSlide) => (prevSlide + 1) % featureImageList.length);
-  //   }, 15000);
-
-  //   return () => clearInterval(timer);
-  // }, [featureImageList]);
-
-
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 15000);
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % featureImageList.length);
+    }, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [featureImageList]);
+
 
   useEffect(() => {
     dispatch(
@@ -139,11 +118,10 @@ function ShoppingHome() {
     );
   }, [dispatch]);
 
-  // console.log(productList, "productList");
 
-  // useEffect(() => {
-  //   dispatch(getFeatureImages());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getFeatureImages());
+  }, [dispatch]);
 
   const handleLoadMore = () => {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 8);
@@ -152,7 +130,7 @@ function ShoppingHome() {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="relative w-full h-[600px] overflow-hidden">
-        {/* {featureImageList && featureImageList.length > 0
+        {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
             <img
               src={slide?.image}
@@ -161,31 +139,15 @@ function ShoppingHome() {
                 } absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000`}
             />
           ))
-          : null} */}
-        {
-          slides.map((slide, id) => (
-            <img
-              src={slide.image}
-              key={id}
-              className={`${id === currentSlide ? "opacity-100" : "opacity-0"
-                } absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000`} />
-          ))
-        }
+          : null}
         <Button
           variant="outline"
           size="icon"
-          // onClick={() =>
-          //   setCurrentSlide(
-          //     (prevSlide) =>
-          //       (prevSlide - 1 + featureImageList.length) %
-          //       featureImageList.length
-          //   )
-          // }
           onClick={() =>
             setCurrentSlide(
               (prevSlide) =>
-                (prevSlide - 1 + slides.length) %
-                slides.length
+                (prevSlide - 1 + featureImageList.length) %
+                featureImageList.length
             )
           }
           className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80"
@@ -197,16 +159,9 @@ function ShoppingHome() {
           size="icon"
           onClick={() =>
             setCurrentSlide(
-              (prevSlide) =>
-                (prevSlide + 1) %
-                slides.length
+              (prevSlide) => (prevSlide + 1) % featureImageList.length
             )
           }
-          // onClick={() =>
-          //   setCurrentSlide(
-          //     (prevSlide) => (prevSlide + 1) % featureImageList.length
-          //   )
-          // }
           className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80"
         >
           <ChevronRightIcon className="w-4 h-4" />
@@ -263,18 +218,6 @@ function ShoppingHome() {
           <h2 className="text-3xl font-bold text-center mb-8">
             Feature Products
           </h2>
-          {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {productList && productList.length > 0
-              ? productList.map((productItem) => (
-                <ShoppingProductTile
-                  key={productItem.id}
-                  product={productItem}
-                  // handleGetProductDetails={handleGetProductDetails}
-                // handleAddtoCart={handleAddtoCart}
-                />
-              ))
-              : null}
-          </div> */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {productList && productList.length > 0
               ? productList.slice(0, visibleProducts).map((productItem) => (
