@@ -52,27 +52,13 @@ function UserCartWrapper({ cartItems, setOpenCartSheet }) {
   );
 }
 
-// UserCartWrapper.propTypes = {
-//   cartItems: PropTypes.oneOfType([
-//     PropTypes.arrayOf(
-//       PropTypes.shape({
-//         productId: PropTypes.string.isRequired,
-//         salePrice: PropTypes.number,
-//         price: PropTypes.number.isRequired,
-//         quantity: PropTypes.number.isRequired,
-//       })
-//     ),
-//     PropTypes.object,
-//   ]).isRequired,
-//   setOpenCartSheet: PropTypes.func.isRequired,
-// };
 
 UserCartWrapper.propTypes = {
   cartItems: PropTypes.arrayOf(
     PropTypes.shape({
       productId: PropTypes.string.isRequired,
       salePrice: PropTypes.number,
-      price: PropTypes.number.isRequired,
+      price: PropTypes.number,
       quantity: PropTypes.number.isRequired,
     })
   ).isRequired,

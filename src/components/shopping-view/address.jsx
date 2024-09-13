@@ -112,7 +112,6 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
-  console.log(addressList, "addressList");
 
   return (
     <Card className="border-none">

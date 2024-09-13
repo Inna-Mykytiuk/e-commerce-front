@@ -11,7 +11,7 @@ function AdminProductTile({
   handleDelete,
 }) {
 
-  // console.log(product, "product");
+
   return (
     <Card className="w-full max-w-sm mx-auto">
       <div>

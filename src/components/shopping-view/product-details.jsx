@@ -29,8 +29,6 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const { toast } = useToast();
 
   function handleRatingChange(getRating) {
-    console.log(getRating, "getRating");
-
     setRating(getRating);
   }
 
@@ -102,7 +100,6 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productDetails]);
 
-  console.log(reviews, "reviews");
 
   const averageReview =
     reviews && reviews.length > 0
@@ -244,7 +241,7 @@ ProductDetailsDialog.propTypes = {
     salePrice: PropTypes.number,
     price: PropTypes.number.isRequired,
     totalStock: PropTypes.number.isRequired
-  }).isRequired,
+  }),
 };
 
 export default ProductDetailsDialog;

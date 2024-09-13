@@ -123,12 +123,12 @@ function UserCartItemsContent({ cartItem }) {
 
 UserCartItemsContent.propTypes = {
   cartItem: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    quantity: PropTypes.number,
     salePrice: PropTypes.number,
-    price: PropTypes.number.isRequired,
-    productId: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    productId: PropTypes.string,
   }).isRequired,
 };
 
