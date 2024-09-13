@@ -7,6 +7,18 @@ function CheckAuth({ isAuthenticated, user, children }) {
 
   // console.log(location.pathname, isAuthenticated);
 
+  if (location.pathname === "/") {
+    if (!isAuthenticated) {
+      return <Navigate to="/auth/login" />;
+    } else {
+      if (user?.role === "admin") {
+        return <Navigate to="/admin/dashboard" />;
+      } else {
+        return <Navigate to="/shop/home" />;
+      }
+    }
+  }
+
   if (!isAuthenticated &&
     !(
       location.pathname.includes("/login") ||
@@ -39,7 +51,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
 CheckAuth.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   user: PropTypes.object,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default CheckAuth;

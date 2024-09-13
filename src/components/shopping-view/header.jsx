@@ -84,8 +84,6 @@ function HeaderRightContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
-  // console.log(cartItems, "cartItems");
-
   return (
     <div className="flex lg:items-center flex-row gap-4">
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
@@ -97,7 +95,6 @@ function HeaderRightContent() {
           variant="outline"
           size="icon"
           className="relative"
-
           aria-hidden="false"
         >
           <ShoppingCart className="w-6 h-6" />
