@@ -81,31 +81,27 @@ function ShoppingListing() {
 
 
   function handleGetProductDetails(getCurrentProductId) {
-    // console.log(getCurrentProductId);
     dispatch(fetchProductDetails(getCurrentProductId));
   }
 
   function handleAddtoCart(getCurrentProductId, getTotalStock) {
-    console.log(getCurrentProductId, getTotalStock, "getCurrentProductId");
-    // console.log(cartItems);
-    // let getCartItems = cartItems.items || [];
+    let getCartItems = cartItems.items || [];
 
-    // if (getCartItems.length) {
-    //   const indexOfCurrentItem = getCartItems.findIndex(
-    //     (item) => item.productId === getCurrentProductId
-    //   );
-    //   if (indexOfCurrentItem > -1) {
-    //     const getQuantity = getCartItems[indexOfCurrentItem].quantity;
-    //     if (getQuantity + 1 > getTotalStock) {
-    //       toast({
-    //         title: `Only ${getQuantity} quantity can be added for this item`,
-    //         variant: "destructive",
-    //       });
-
-    //       return;
-    //     }
-    //   }
-    // }
+    if (getCartItems.length) {
+      const indexOfCurrentItem = getCartItems.findIndex(
+        (item) => item.productId === getCurrentProductId
+      );
+      if (indexOfCurrentItem > -1) {
+        const getQuantity = getCartItems[indexOfCurrentItem].quantity;
+        if (getQuantity + 1 > getTotalStock) {
+          toast({
+            title: `Only ${getQuantity} quantity can be added for this item`,
+            variant: "destructive",
+          });
+          return;
+        }
+      }
+    }
 
     dispatch(
       addToCart({
