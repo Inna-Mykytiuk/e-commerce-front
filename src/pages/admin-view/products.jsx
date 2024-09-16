@@ -28,6 +28,7 @@ function AdminProducts() {
   const [formData, setFormData] = useState({ initialFormData });
   const [currentEditedId, setCurrentEditedId] = useState(null);
   const [imageFile, setImageFile] = useState(null);
+  const [visibleProducts, setVisibleProducts] = useState(8);
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [imageLoadingState, setImageLoadingState] = useState(false);
 
@@ -87,6 +88,10 @@ function AdminProducts() {
       .every((item) => item);
   }
 
+  const handleLoadMore = () => {
+    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 8);
+  };
+
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
@@ -98,7 +103,7 @@ function AdminProducts() {
       </div>
       <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
         {productList && productList.length > 0
-          ? productList.map((productItem) => (
+          ? productList.slice(0, visibleProducts).map((productItem) => (
             <AdminProductTile
               key={productItem._id}
               setFormData={setFormData}
@@ -110,6 +115,17 @@ function AdminProducts() {
           ))
           : null}
       </div>
+      {visibleProducts < productList.length && (
+        <div className="text-center mt-8">
+          <Button
+            variant="outline"
+            className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 hover:text-white"
+            onClick={handleLoadMore}
+          >
+            Load More
+          </Button>
+        </div>
+      )}
       <Sheet
         open={openCreateProductsDialog}
         onOpenChange={() => {
