@@ -1,20 +1,17 @@
 import { Button } from "@/components/ui/button";
-import bannerOne from "../../assets/banner-11.webp";
-import bannerTwo from "../../assets/banner-22.webp";
-import bannerThree from "../../assets/banner-33.webp";
+import { IoWomanOutline } from "react-icons/io5";
+import { IoShirtOutline } from "react-icons/io5";
+import { SiNike, SiAdidas, SiPuma, SiZara } from "react-icons/si";
+import { PiPantsLight } from "react-icons/pi";
+
 import {
-  Airplay,
   BabyIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  CloudLightning,
+  Footprints,
   Heater,
   Images,
-  Shirt,
   ShirtIcon,
-  ShoppingBasket,
-  UmbrellaIcon,
-  WashingMachine,
   WatchIcon,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -33,19 +30,19 @@ import { getFeatureImages } from "@/store/common-slice";
 
 const categoriesWithIcon = [
   { id: "men", label: "Men", icon: ShirtIcon },
-  { id: "women", label: "Women", icon: CloudLightning },
+  { id: "women", label: "Women", icon: IoWomanOutline },
   { id: "kids", label: "Kids", icon: BabyIcon },
   { id: "accessories", label: "Accessories", icon: WatchIcon },
-  { id: "footwear", label: "Footwear", icon: UmbrellaIcon },
+  { id: "footwear", label: "Footwear", icon: Footprints },
 ];
 
 const brandsWithIcon = [
-  { id: "nike", label: "Nike", icon: Shirt },
-  { id: "adidas", label: "Adidas", icon: WashingMachine },
-  { id: "puma", label: "Puma", icon: ShoppingBasket },
-  { id: "levi", label: "Levi's", icon: Airplay },
-  { id: "zara", label: "Zara", icon: Images },
-  { id: "h&m", label: "H&M", icon: Heater },
+  { id: "nike", label: "Nike", icon: SiNike },
+  { id: "adidas", label: "Adidas", icon: SiAdidas },
+  { id: "puma", label: "Puma", icon: SiPuma },
+  { id: "levi", label: "Levi's", icon: PiPantsLight },
+  { id: "zara", label: "Zara", icon: SiZara },
+  { id: "h&m", label: "H&M", icon: IoShirtOutline },
 ];
 
 
@@ -174,14 +171,14 @@ function ShoppingHome() {
           <h2 className="text-3xl font-bold text-center mb-8">
             Shop by category
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
             {categoriesWithIcon.map((categoryItem) => (
               <Card
                 key={categoryItem.id}
                 onClick={() =>
                   handleNavigateToListingPage(categoryItem, "category")
                 }
-                className="cursor-pointer hover:shadow-lg transition-shadow"
+                className="cursor-pointer hover:shadow-lg transition-shadow "
               >
                 <CardContent className="flex flex-col items-center justify-center p-6">
                   <categoryItem.icon className="w-12 h-12 mb-4 text-primary" />
