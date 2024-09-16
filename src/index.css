@@ -59,11 +59,6 @@
   }
 }
 
-.image {
-  color: antiquewhite;
-  background-image: url('/src/assets/banner-1.webp');
-}
-
 
 @layer base {
   * {

@@ -85,11 +85,16 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				scale: {
+					"0%": { transform: "scale(1)" },
+					"100%": { transform: "scale(1.5)" },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				scale: "scale 0.7s ease infinite alternate",
 			}
 		}
 	},

@@ -1,0 +1,44 @@
+{
+  "title": "Ecommerce",
+  "subtitle": "Social networks",
+  "description": "Welcome to our fashion haven, where style meets comfort for every member of your family. Whether you're looking for casual women's wear, trendy men's outfits, or playful children's fashion, we have something for everyone. Explore the latest collections and find the perfect look for any occasion. Your style journey starts here!",
+  "socialLinks": [
+    {
+      "href": "#",
+      "ariaLabel": "Facebook",
+      "icon": "FaFacebookF"
+    },
+    {
+      "href": "#",
+      "ariaLabel": "Instagram",
+      "icon": "AiFillInstagram"
+    },
+    {
+      "href": "https://www.linkedin.com/in/inna-mykytiuk/",
+      "ariaLabel": "LinkedIn",
+      "icon": "FaLinkedinIn"
+    },
+    {
+      "href": "#",
+      "ariaLabel": "Twitter",
+      "icon": "FaTwitter"
+    },
+    {
+      "href": "https://github.com/Inna-Mykytiuk",
+      "ariaLabel": "Github",
+      "icon": "FaGithubAlt"
+    },
+    {
+      "href": "#",
+      "ariaLabel": "Telegram",
+      "icon": "FaTelegramPlane"
+    }
+  ],
+  "contacts": "Contacts",
+  "location": "The whole world",
+  "email": "innka-pinnka@ukr.net",
+  "phoneNumber": "+380 (93) 999-99-99",
+  "bottomText": "© Explore.com. All Rights Reserved.",
+  "bottomText1": "Made with",
+  "bottomText2": "by Tokio"
+}
