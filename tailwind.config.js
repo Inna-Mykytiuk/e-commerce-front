@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
 	darkMode: ["class"],
 	content: [
 		'./pages/**/*.{js,jsx}',
@@ -10,7 +10,7 @@ module.exports = {
 	prefix: "",
 	theme: {
 		container: {
-			center: 'true',
+			center: true,
 			padding: '2rem',
 			screens: {
 				'lg': '1280px',
@@ -18,6 +18,10 @@ module.exports = {
 			}
 		},
 		extend: {
+			backgroundImage: {
+				backdrop: `linear-gradient(rgba(41, 41, 41, 0.40),rgba(41, 41, 41, 0.40))`,
+				shop: `url(/src/assets/shop.jpg)`,
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -89,5 +93,5 @@ module.exports = {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [import("tailwindcss-animate")],
 }
