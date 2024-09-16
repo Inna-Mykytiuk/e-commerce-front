@@ -43,6 +43,7 @@ function ShoppingListing() {
   const { cartItems } = useSelector((state) => state.shopCart);
   const { user } = useSelector((state) => state.auth);
   const [filters, setFilters] = useState({});
+  const [visibleProducts, setVisibleProducts] = useState(8);
   const [sort, setSort] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
@@ -117,6 +118,10 @@ function ShoppingListing() {
     });
   }
 
+  const handleLoadMore = () => {
+    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 8);
+  };
+
   useEffect(() => {
     setSort("price-lowtohigh");
     setFilters(JSON.parse(sessionStorage.getItem("filters")) || {});
@@ -144,7 +149,7 @@ function ShoppingListing() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 p-4 md:p-6">
       <ProductFilter filters={filters} handleFilter={handleFilter} />
-      <div className="bg-background w-full rounded-lg shadow-sm">
+      <div className="bg-background w-full">
         <div className="p-4 border-b flex items-center justify-between">
           <h2 className="text-lg font-extrabold">All Products</h2>
           <div className="flex items-center gap-3">
@@ -179,7 +184,7 @@ function ShoppingListing() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {productList && productList.length > 0
-            ? productList.map((productItem) => (
+            ? productList.slice(0, visibleProducts).map((productItem) => (
               <ShoppingProductTile
                 key={productItem.id || productItem._id}
                 handleGetProductDetails={handleGetProductDetails}
@@ -189,6 +194,17 @@ function ShoppingListing() {
             ))
             : null}
         </div>
+        {visibleProducts < productList.length && (
+          <div className="text-center mt-8">
+            <Button
+              variant="outline"
+              className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 hover:text-white"
+              onClick={handleLoadMore}
+            >
+              Load More
+            </Button>
+          </div>
+        )}
       </div>
       <ProductDetailsDialog
         open={openDetailsDialog}
