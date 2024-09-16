@@ -10,7 +10,7 @@ import store from './store/store.js'
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <BrowserRouter basename="/e-commerce-front">
+    <BrowserRouter basename='/routes'>
       <App />
       <Toaster />
     </BrowserRouter>
