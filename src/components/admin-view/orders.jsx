@@ -38,7 +38,7 @@ function AdminOrdersView() {
   }, [orderDetails]);
 
   return (
-    <Card>
+    <Card className="shadow-lg">
       <CardHeader>
         <CardTitle>All Orders</CardTitle>
       </CardHeader>

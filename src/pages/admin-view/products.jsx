@@ -101,7 +101,7 @@ function AdminProducts() {
       <div className="mb-5 w-full flex justify-end">
         <Button onClick={() => setOpenCreateProductsDialog(true)}>Add New Product</Button>
       </div>
-      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4 xl:lg:grid-cols-5 ">
         {productList && productList.length > 0
           ? productList.slice(0, visibleProducts).map((productItem) => (
             <AdminProductTile

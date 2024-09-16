@@ -13,7 +13,7 @@ function AdminProductTile({
 
 
   return (
-    <Card className="w-full max-w-sm mx-auto">
+    <Card className="w-full max-w-sm mx-auto shadow-md">
       <div>
         <div className="relative">
           <img
