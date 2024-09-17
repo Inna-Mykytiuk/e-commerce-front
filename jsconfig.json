@@ -1,15 +1,17 @@
 // {
 //   "compilerOptions": {
-//     "baseUrl": ".",
-//     "paths": {
-//       "@/*": ["./src/*"]
-//     }
-//   }
+//     "baseUrl": "src"
+//   },
+//   "include": ["src"]
 // }
 
 {
   "compilerOptions": {
-    "baseUrl": "src"
-  },
-  "include": ["src"]
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
 }
+
+

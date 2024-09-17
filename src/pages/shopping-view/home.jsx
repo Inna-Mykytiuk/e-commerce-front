@@ -124,16 +124,16 @@ function ShoppingHome() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="relative w-full h-[600px] overflow-hidden">
+      <div className="relative w-full h-[600px] overflow-hidden xl:h-[800px]">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
             <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}>
               <img
                 src={slide?.image}
                 alt={slide?.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
-              <h2 className="font-bold mt-3 absolute top-[110px] left-[65px] md:left-[100px]  flex max-w-[300px] md:max-w-[500px] text-4xl md:text-6xl">{slide?.title}</h2>
+              <h2 className="font-bold mt-3 absolute top-[110px] left-[65px] md:left-[100px] flex max-w-[300px] md:max-w-[500px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px]">{slide?.title}</h2>
             </div>
           ))
           : null}
