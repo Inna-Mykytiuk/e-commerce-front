@@ -85,6 +85,7 @@ function ShoppingOrders() {
                       }}
                     >
                       <Button
+                        aria-hidden={false}
                         onClick={(event) => {
                           handleFetchOrderDetails(orderItem?._id);
                           event.currentTarget.blur();

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 import { useEffect, useState } from "react";
-import { StarIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
