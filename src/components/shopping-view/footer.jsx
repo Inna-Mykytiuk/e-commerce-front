@@ -54,15 +54,15 @@ export default function Footer() {
               <h4 className="text-white font-montserrat uppercase text-base font-normal mb-[30px]">
                 {contacts}
               </h4>
-              <p className="flex gap-1 text-white text-xs mb-4">
+              <p className="flex gap-1 text-white text-xs mb-4 items-center">
                 <FaLocationDot />
                 {location}
               </p>
-              <p className="flex gap-1 text-white text-xs mb-4">
+              <p className="flex gap-1 text-white text-xs mb-4 items-center">
                 <MdEmail />
                 {email}
               </p>
-              <p className="flex gap-1 text-white text-xs">
+              <p className="flex gap-1 text-white text-xs items-center">
                 <FaPhoneAlt />
                 {phoneNumber}
               </p>

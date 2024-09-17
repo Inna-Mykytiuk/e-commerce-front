@@ -29,8 +29,6 @@ import PaymentSuccessPage from "./pages/shopping-view/paymant-succes";
 
 import { checkAuth } from "./store/auth-slice";
 
-// import { Skeleton } from "@/components/ui/skeleton"
-
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(

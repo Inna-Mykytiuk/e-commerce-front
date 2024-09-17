@@ -1,6 +1,7 @@
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import ShoppingProductTile from "@/components/shopping-view/product-tile";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import { fetchProductDetails } from "@/store/shop/products-slice";
@@ -19,6 +20,7 @@ function SearchProducts() {
   const dispatch = useDispatch();
   const { searchResults } = useSelector((state) => state.shopSearch);
   const { productDetails } = useSelector((state) => state.shopProducts);
+  const [visibleProducts, setVisibleProducts] = useState(8);
 
   const { user } = useSelector((state) => state.auth);
 
@@ -83,39 +85,56 @@ function SearchProducts() {
     if (productDetails !== null) setOpenDetailsDialog(true);
   }, [productDetails]);
 
+  const handleLoadMore = () => {
+    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 8);
+  };
+
 
   return (
-    <div className="container mx-auto md:px-6 px-4 py-8 h-screen">
-      <div className="flex justify-center mb-8">
-        <div className="w-full flex items-center">
-          <Input
-            value={keyword}
-            name="keyword"
-            onChange={(event) => setKeyword(event.target.value)}
-            className="py-6"
-            placeholder="Search Products..."
-          />
+    <section className="min-h-full flex-col w-full">
+      <div className="container mx-auto md:px-6 px-4 py-8">
+        <div className="flex justify-center mb-8">
+          <div className="w-full flex items-center">
+            <Input
+              value={keyword}
+              name="keyword"
+              onChange={(event) => setKeyword(event.target.value)}
+              className="py-6"
+              placeholder="Search Products..."
+            />
+          </div>
         </div>
+        {!searchResults.length ? (
+          <h1 className="text-5xl font-extrabold">No result found!</h1>
+        ) : null}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {searchResults.slice(0, visibleProducts).map((item) => (
+            <ShoppingProductTile
+              key={item._id}
+              handleAddtoCart={handleAddtoCart}
+              product={item}
+              handleGetProductDetails={handleGetProductDetails}
+            />
+          ))}
+        </div>
+        {visibleProducts < searchResults.length && (
+          <div className="text-center mt-8">
+            <Button
+              variant="outline"
+              className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 hover:text-white"
+              onClick={handleLoadMore}
+            >
+              Load More
+            </Button>
+          </div>
+        )}
+        <ProductDetailsDialog
+          open={openDetailsDialog}
+          setOpen={setOpenDetailsDialog}
+          productDetails={productDetails}
+        />
       </div>
-      {!searchResults.length ? (
-        <h1 className="text-5xl font-extrabold">No result found!</h1>
-      ) : null}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {searchResults.map((item) => (
-          <ShoppingProductTile
-            key={item._id}
-            handleAddtoCart={handleAddtoCart}
-            product={item}
-            handleGetProductDetails={handleGetProductDetails}
-          />
-        ))}
-      </div>
-      <ProductDetailsDialog
-        open={openDetailsDialog}
-        setOpen={setOpenDetailsDialog}
-        productDetails={productDetails}
-      />
-    </div>
+    </section>
   );
 }
 
