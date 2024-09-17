@@ -9,8 +9,6 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   Footprints,
-  Heater,
-  Images,
   ShirtIcon,
   WatchIcon,
 } from "lucide-react";
@@ -129,12 +127,14 @@ function ShoppingHome() {
       <div className="relative w-full h-[600px] overflow-hidden">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
-            <img
-              src={slide?.image}
-              key={index}
-              className={`${index === currentSlide ? "opacity-100" : "opacity-0"
-                } absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000`}
-            />
+            <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}>
+              <img
+                src={slide?.image}
+                alt={slide?.title}
+                className="w-full h-full object-cover"
+              />
+              <h2 className="font-bold mt-3 absolute top-[110px] left-[65px] md:left-[100px]  flex max-w-[300px] md:max-w-[500px] text-4xl md:text-6xl">{slide?.title}</h2>
+            </div>
           ))
           : null}
         <Button

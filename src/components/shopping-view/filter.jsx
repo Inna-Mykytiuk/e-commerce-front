@@ -44,7 +44,7 @@ function ProductFilter({ filters, handleFilter }) {
 
 ProductFilter.propTypes = {
   filters: PropTypes.objectOf(
-    PropTypes.arrayOf(PropTypes.number)
+    PropTypes.arrayOf(PropTypes.string)
   ).isRequired,
   handleFilter: PropTypes.func.isRequired,
 };
