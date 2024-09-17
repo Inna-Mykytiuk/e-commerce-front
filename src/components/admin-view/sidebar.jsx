@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "../ui/sheet";
 
 const adminSidebarMenuItems = [
   {
@@ -63,6 +63,7 @@ function AdminSideBar({ open, setOpen }) {
           <div className="flex flex-col h-full">
             <SheetHeader className="border-b">
               <SheetTitle className="flex gap-2 mt-5 mb-5">
+                <SheetDescription />
                 <ChartNoAxesCombined size={30} />
                 <p className="text-2xl font-extrabold">Admin Panel</p>
               </SheetTitle>

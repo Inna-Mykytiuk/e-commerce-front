@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { capturePayment } from "@/store/shop/order-slice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -18,16 +18,16 @@ function PaypalReturnPage() {
       dispatch(capturePayment({ paymentId, payerId, orderId })).then((data) => {
         if (data?.payload?.success) {
           sessionStorage.removeItem("currentOrderId");
-          window.location.href = "/shop/payment-success";
+          window.location.href = "/e-commerce-front/shop/payment-success";
         }
       });
     }
   }, [paymentId, payerId, dispatch]);
 
   return (
-    <Card>
+    <Card clsassName="p-10 h-screen flex flex-col justify-center items-center">
       <CardHeader>
-        <CardTitle>Processing Payment...Please wait!</CardTitle>
+        <CardTitle className="text-4xl text-bold">Processing Payment...Please wait!</CardTitle>
       </CardHeader>
     </Card>
   );

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import { useSelector } from "react-redux";
 import { Badge } from "../ui/badge";
-import { DialogContent } from "../ui/dialog";
+import { DialogContent, DialogTitle } from "../ui/dialog";
 import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
 
@@ -10,7 +10,8 @@ function ShoppingOrderDetailsView({ orderDetails }) {
   const { user } = useSelector((state) => state.auth);
 
   return (
-    <DialogContent className="sm:max-w-[600px]">
+    <DialogContent className="sm:max-w-[600px]" aria-describedby={undefined}>
+      <DialogTitle />
       <div className="grid gap-6">
         <div className="grid gap-2">
           <div className="flex mt-6 items-center justify-between">
@@ -101,7 +102,7 @@ ShoppingOrderDetailsView.propTypes = {
         quantity: PropTypes.number.isRequired,
         price: PropTypes.number.isRequired,
       })
-    ).isRequired,
+    ),
     addressInfo: PropTypes.shape({
       address: PropTypes.string.isRequired,
       city: PropTypes.string.isRequired,
@@ -109,7 +110,7 @@ ShoppingOrderDetailsView.propTypes = {
       phone: PropTypes.string.isRequired,
       notes: PropTypes.string,
     }).isRequired,
-  }).isRequired,
+  }),
 };
 
 export default ShoppingOrderDetailsView;

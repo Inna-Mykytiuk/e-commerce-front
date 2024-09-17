@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './App.css';
 import NotFound from './pages/not-found';
+import Loader from "./components/common/loader";
 
 import AuthLayout from './components/auth/layout';
 import AuthLogin from './pages/auth/login';
@@ -28,7 +29,7 @@ import PaymentSuccessPage from "./pages/shopping-view/paymant-succes";
 
 import { checkAuth } from "./store/auth-slice";
 
-import { Skeleton } from "@/components/ui/skeleton"
+// import { Skeleton } from "@/components/ui/skeleton"
 
 
 function App() {
@@ -41,7 +42,11 @@ function App() {
     dispatch(checkAuth());
   }, [dispatch]);
 
-  if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
+  if (isLoading) return (
+    <div className="flex justify-center items-center h-screen">
+      <Loader />
+    </div>
+  );
 
   return (
     <Routes>

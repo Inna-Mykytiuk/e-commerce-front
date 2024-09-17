@@ -83,8 +83,10 @@ function AdminOrdersView() {
                       }}
                     >
                       <Button
-                        onClick={() =>
-                          handleFetchOrderDetails(orderItem?._id)
+                        onClick={(event) => {
+                          handleFetchOrderDetails(orderItem?._id);
+                          event.currentTarget.blur();
+                        }
                         }
                       >
                         View Details

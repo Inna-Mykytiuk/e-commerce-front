@@ -15,11 +15,11 @@ function ShoppingProductTile({
   return (
     <Card className="w-full max-w-sm mx-auto cursor-pointer shadow-md hover:shadow-lg transition-all ease-in-out delay-300">
       <div onClick={() => handleGetProductDetails(product?._id)}>
-        <div className="relative">
+        <div className="relative h-[350px]">
           <img
             src={product?.image}
             alt={product?.title}
-            className="w-full h-[350px] object-cover rounded-t-lg object-top"
+            className="w-full h-full object-cover rounded-t-lg object-top"
           />
           {product?.totalStock === 0 ? (
             <Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">
