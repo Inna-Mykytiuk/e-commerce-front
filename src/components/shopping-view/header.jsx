@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { FaShopify } from "react-icons/fa";
 
-import { HousePlug, LogOut, Menu, ShoppingCart, UserCog } from "lucide-react";
+import { LogOut, Menu, ShoppingCart, UserCog } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +24,7 @@ import { shoppingViewHeaderMenuItems } from "@/config";
 import { Sheet, SheetTrigger, SheetContent, SheetDescription, SheetTitle } from "../ui/sheet";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
-import { logoutUser } from "@/store/auth-slice";
+import { logoutUser, resetTokenAndCredentials } from "@/store/auth-slice";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import UserCartWrapper from "./cart-wrapper";
 
@@ -77,7 +77,10 @@ function HeaderRightContent() {
   const dispatch = useDispatch();
 
   function handleLogout() {
-    dispatch(logoutUser());
+    // dispatch(logoutUser());
+    dispatch(resetTokenAndCredentials());
+    sessionStorage.clear();
+    navigate("/auth/login");
   }
 
   useEffect(() => {
