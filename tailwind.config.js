@@ -21,8 +21,10 @@ export default {
 			backgroundImage: {
 				backdrop: `linear-gradient(rgba(41, 41, 41, 0.40),rgba(41, 41, 41, 0.40))`,
 				shop: `url(/src/assets/shop.jpg)`,
+				gradient: 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(198,210,213,1) 100%, rgba(205,205,210,1) 100%)',
 			},
 			colors: {
+				accentBlue: '#024fab',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

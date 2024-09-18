@@ -31,11 +31,11 @@ function MenuItems({ closeMenu, className }) {
   }
 
   return (
-    <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
+    <nav className="flex flex-col lg:mb-0 justify-center items-center gap-6 lg:flex-row py-[100px]">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
-          className={cn("text-base font-medium cursor-pointer", className)}
+          className={cn("text-lg font-medium cursor-pointer transition-all ease-in-out hover:text-accentBlue", className)}
           key={menuItem.id}
         >
           {menuItem.label}

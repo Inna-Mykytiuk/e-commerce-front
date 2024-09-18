@@ -23,9 +23,9 @@ function ShoppingHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
-        <Link to="/shop/home" className="flex items-center gap-2">
+        <Link to="/shop/home" className="flex items-center gap-2 transition-all ease-in-out hover:text-accentBlue text-gray-800">
           <FaShopify className="h-6 w-6" />
-          <span className="font-bold">Ecommerce</span>
+          <span className="font-bold font-lg ">Ecommerce</span>
         </Link>
         {/* Mobile menu */}
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>

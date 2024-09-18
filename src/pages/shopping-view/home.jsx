@@ -124,16 +124,16 @@ function ShoppingHome() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="relative w-full h-[600px] overflow-hidden xl:h-[800px]">
+      <div className="relative w-full h-[450px] sm:h-[600px] overflow-hidden xl:h-[800px]">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
-            <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}>
+            <div key={index} className={`absolute inset-0 transition-opacity duration-1000 bg-gradient ${index === currentSlide ? "opacity-100" : "opacity-0"}`}>
               <img
                 src={slide?.image}
                 alt={slide?.title}
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-top hidden sm:block"
               />
-              <h2 className="font-bold mt-3 absolute top-[110px] left-[65px] md:left-[100px] flex max-w-[300px] md:max-w-[500px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px]">{slide?.title}</h2>
+              <h2 className="font-bold absolute top-[110px] left-[65px] md:left-[100px] flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700 ml-[-20px] sm:ml-0">{slide?.title}</h2>
             </div>
           ))
           : null}
@@ -147,9 +147,9 @@ function ShoppingHome() {
                 featureImageList.length
             )
           }
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80"
+          className="hidden sm:block absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80"
         >
-          <ChevronLeftIcon className="w-4 h-4" />
+          <ChevronLeftIcon className="w-4 h-4 ml-[10px]" />
         </Button>
         <Button
           variant="outline"
@@ -159,9 +159,9 @@ function ShoppingHome() {
               (prevSlide) => (prevSlide + 1) % featureImageList.length
             )
           }
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80 hidden sm:block"
         >
-          <ChevronRightIcon className="w-4 h-4" />
+          <ChevronRightIcon className="w-4 h-4 ml-[11px]" />
         </Button>
       </div>
 

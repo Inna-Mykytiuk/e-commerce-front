@@ -41,11 +41,11 @@ function HeaderRightContent() {
           }}
           variant="outline"
           size="icon"
-          className="relative"
+          className="relative transition-all ease-in-out hover:text-accentBlue group"
           aria-hidden="false"
         >
           <ShoppingCart className="w-6 h-6" />
-          <span className="absolute top-[-10px] right-[-10px] font-bold text-sm text-white bg-primary rounded-full w-5 h-5 flex items-center justify-center">
+          <span className="absolute top-[-10px] right-[-10px] font-bold text-sm text-white bg-primary rounded-full w-5 h-5 flex items-center justify-center transition-all ease-in-out group-hover:bg-accentBlue">
             {cartItems?.items?.length || 0}
           </span>
           <span className="sr-only">User cart</span>
@@ -62,8 +62,8 @@ function HeaderRightContent() {
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Avatar className="bg-black cursor-pointer">
-            <AvatarFallback className="bg-black text-white font-extrabold">
+          <Avatar className="bg-gray-800 cursor-pointer">
+            <AvatarFallback className="bg-gray-800 text-white font-extrabold">
               {user?.userName[0].toUpperCase()}
             </AvatarFallback>
           </Avatar>
