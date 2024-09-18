@@ -22,7 +22,7 @@ function UserCartWrapper({ cartItems, setOpenCartSheet }) {
       : 0;
 
   return (
-    <SheetContent className="sm:max-w-md">
+    <SheetContent className="w-full sm:max-w-md ">
       <SheetHeader>
         <SheetTitle>Your Cart</SheetTitle>
         <SheetDescription />

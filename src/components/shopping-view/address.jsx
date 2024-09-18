@@ -115,7 +115,7 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
 
   return (
     <Card className="border-none">
-      <div className="mb-5 p-3 grid grid-cols-1 sm:grid-cols-2  gap-2">
+      <div className="mb-5 p-3 grid grid-cols-1 md:grid-cols-2  gap-2">
         {addressList && addressList.length > 0
           ? addressList.map((singleAddressItem) => (
             <AddressCard

@@ -1,5 +1,8 @@
+import PropTypes from "prop-types";
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { cn } from "@/lib/utils";
 import {
   Link,
   useLocation,
@@ -28,7 +31,7 @@ import { logoutUser, resetTokenAndCredentials } from "@/store/auth-slice";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import UserCartWrapper from "./cart-wrapper";
 
-function MenuItems() {
+function MenuItems({ closeMenu, className }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -51,6 +54,7 @@ function MenuItems() {
         new URLSearchParams(`?category=${getCurrentMenuItem.id}`)
       )
       : navigate(getCurrentMenuItem.path);
+    closeMenu();
   }
 
   return (
@@ -58,7 +62,7 @@ function MenuItems() {
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
-          className="text-sm font-medium cursor-pointer"
+          className={cn("text-base font-medium cursor-pointer", className)}
           key={menuItem.id}
         >
           {menuItem.label}
@@ -88,12 +92,16 @@ function HeaderRightContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
+  function handleCartOpen() {
+    setOpenCartSheet(true);
+  }
+
   return (
-    <div className="flex lg:items-center flex-row gap-4">
+    <div className="flex lg:items-center flex-row gap-4 relative z-40">
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
         <Button
           onClick={(event) => {
-            setOpenCartSheet(true);
+            handleCartOpen();
             event.currentTarget.blur();
           }}
           variant="outline"
@@ -148,6 +156,18 @@ function HeaderRightContent() {
 function ShoppingHeader() {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openCartSheet, setOpenCartSheet] = useState(false);
+
+  function closeMenu() {
+    setIsMenuOpen(false);
+  }
+
+  function handleCartOpen() {
+    setOpenCartSheet(true);
+    closeMenu();
+  }
+
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
@@ -155,29 +175,42 @@ function ShoppingHeader() {
           <FaShopify className="h-6 w-6" />
           <span className="font-bold">Ecommerce</span>
         </Link>
-        <Sheet>
-          <SheetTitle />
+        {/* Mobile menu */}
+        <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
           <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="lg:hidden">
+            <Button
+              variant="outline"
+              size="icon"
+              className="lg:hidden"
+              onClick={handleCartOpen}
+            >
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle header menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-full max-w-xs">
+          <SheetContent side="left" className="w-full sm:max-w-md">
             <SheetDescription />
-            <MenuItems />
-            <HeaderRightContent />
+            <MenuItems
+              closeMenu={closeMenu}
+              className="text-2xl"
+
+            />
           </SheetContent>
         </Sheet>
+
+        {/* Desctop Menu */}
         <div className="hidden lg:block">
           <MenuItems />
         </div>
-        <div className="hidden lg:block ">
-          <HeaderRightContent />
-        </div>
+        <HeaderRightContent />
       </div>
     </header>
   )
 }
+
+MenuItems.propTypes = {
+  closeMenu: PropTypes.func.isRequired,
+  className: PropTypes.string
+};
 
 export default ShoppingHeader;
