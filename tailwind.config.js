@@ -24,6 +24,7 @@ export default {
 				gradient: 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(198,210,213,1) 100%, rgba(205,205,210,1) 100%)',
 			},
 			colors: {
+				accentRed: '#ef4444',
 				accentBlue: '#024fab',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -70,6 +71,9 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			boxShadow: {
+				custom: '2px 6px 30px -12px rgba(0,0,0,0.70)',
 			},
 			keyframes: {
 				'accordion-down': {

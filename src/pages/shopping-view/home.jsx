@@ -166,10 +166,10 @@ function ShoppingHome() {
       </div>
 
 
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
-            Shop by category
+            Shop by Category
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
             {categoriesWithIcon.map((categoryItem) => (
@@ -178,11 +178,11 @@ function ShoppingHome() {
                 onClick={() =>
                   handleNavigateToListingPage(categoryItem, "category")
                 }
-                className="cursor-pointer hover:shadow-lg transition-shadow "
+                className="cursor-pointer hover:shadow-custom transition-all ease-in-out group"
               >
                 <CardContent className="flex flex-col items-center justify-center p-6">
-                  <categoryItem.icon className="w-12 h-12 mb-4 text-primary" />
-                  <span className="font-bold">{categoryItem.label}</span>
+                  <categoryItem.icon className="w-12 h-12 mb-4 text-primary text-gray-600 group-hover:text-accentBlue transition-all ease-in-out " />
+                  <span className="font-bold text-gray-600 group-hover:text-accentBlue transition-all ease-in-out ">{categoryItem.label}</span>
                 </CardContent>
               </Card>
             ))}
@@ -190,7 +190,7 @@ function ShoppingHome() {
         </div>
       </section>
 
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Shop by Brand</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -198,11 +198,11 @@ function ShoppingHome() {
               <Card
                 key={brandItem.id}
                 onClick={() => handleNavigateToListingPage(brandItem, "brand")}
-                className="cursor-pointer hover:shadow-lg transition-shadow"
+                className="cursor-pointer hover:shadow-custom transition-all ease-in-out group"
               >
-                <CardContent className="flex flex-col items-center justify-center p-6">
-                  <brandItem.icon className="w-12 h-12 mb-4 text-primary" />
-                  <span className="font-bold">{brandItem.label}</span>
+                <CardContent className="flex flex-col items-center justify-center p-6 ">
+                  <brandItem.icon className="w-12 h-12 mb-4 text-primary text-gray-600 group-hover:text-accentBlue transition-all ease-in-out " />
+                  <span className="font-bold text-gray-600 group-hover:text-accentBlue transition-all ease-in-out ">{brandItem.label}</span>
                 </CardContent>
               </Card>
             ))}
@@ -210,7 +210,7 @@ function ShoppingHome() {
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Feature Products

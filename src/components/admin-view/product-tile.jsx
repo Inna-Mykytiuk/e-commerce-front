@@ -13,13 +13,13 @@ function AdminProductTile({
 
 
   return (
-    <Card className="w-full max-w-sm mx-auto shadow-md">
+    <Card className="w-full max-w-sm mx-auto shadow-md hover:shadow-custom transition-all ease-in-out">
       <div>
         <div className="relative">
           <img
             src={product?.image}
             alt={product?.title}
-            className="w-full h-[300px] object-cover rounded-t-lg"
+            className="w-full h-[300px] object-cover"
           />
         </div>
         <CardContent>

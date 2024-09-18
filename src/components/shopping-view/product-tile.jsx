@@ -13,7 +13,7 @@ function ShoppingProductTile({
 
 
   return (
-    <Card className="w-full max-w-sm mx-auto cursor-pointer shadow-md hover:shadow-lg transition-all ease-in-out delay-300">
+    <Card className="w-full max-w-sm mx-auto cursor-pointer shadow-md hover:shadow-custom transition-all ease-in-out">
       <div onClick={() => handleGetProductDetails(product?._id)}>
         <div className="relative h-[350px]">
           <img

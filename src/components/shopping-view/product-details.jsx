@@ -114,14 +114,14 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
       <DialogContent className="grid grid-cols-1 md:grid-cols-2  gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw] max-h-[450px] md:max-h-full overflow-auto" aria-describedby={undefined}
 
       >
-        <div className="relative overflow-hidden rounded-lg">
+        <div className="relative overflow-hidden">
           <DialogTitle />
           <img
             src={productDetails?.image}
             alt={productDetails?.title}
             width={600}
             height={600}
-            className="aspect-square w-full object-cover"
+            className="w-full object-cover"
           />
         </div>
         <div className="">
