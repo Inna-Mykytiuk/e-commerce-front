@@ -111,7 +111,9 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
       open={open}
       onOpenChange={handleDialogClose}
     >
-      <DialogContent className="grid grid-cols-2 gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw]" aria-describedby={undefined}>
+      <DialogContent className="grid grid-cols-1 md:grid-cols-2  gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw] max-h-[450px] md:max-h-full overflow-auto" aria-describedby={undefined}
+
+      >
         <div className="relative overflow-hidden rounded-lg">
           <DialogTitle />
           <img
