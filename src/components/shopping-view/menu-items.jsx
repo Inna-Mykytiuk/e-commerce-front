@@ -46,7 +46,7 @@ function MenuItems({ closeMenu, className }) {
 }
 
 MenuItems.propTypes = {
-  closeMenu: PropTypes.func.isRequired,
+  closeMenu: PropTypes.func,
   className: PropTypes.string
 };
 

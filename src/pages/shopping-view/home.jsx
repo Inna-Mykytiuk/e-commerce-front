@@ -1,47 +1,25 @@
-import { Button } from "@/components/ui/button";
-import { IoWomanOutline } from "react-icons/io5";
-import { IoShirtOutline } from "react-icons/io5";
-import { SiNike, SiAdidas, SiPuma, SiZara } from "react-icons/si";
-import { PiPantsLight } from "react-icons/pi";
-
-import {
-  BabyIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  Footprints,
-  ShirtIcon,
-  WatchIcon,
-} from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
+import { getFeatureImages } from "@/store/common-slice";
 import {
   fetchAllFilteredProducts,
   fetchProductDetails,
 } from "@/store/shop/products-slice";
-import ShoppingProductTile from "@/components/shopping-view/product-tile";
-import { useNavigate } from "react-router-dom";
-import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
+
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "lucide-react";
+import { categoriesWithIcon } from "@/lib/icons";
+import { brandsWithIcon } from "@/lib/icons";
+
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import { Card, CardContent } from "@/components/ui/card";
+import ShoppingProductTile from "@/components/shopping-view/product-tile";
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
-import { getFeatureImages } from "@/store/common-slice";
-
-const categoriesWithIcon = [
-  { id: "men", label: "Men", icon: ShirtIcon },
-  { id: "women", label: "Women", icon: IoWomanOutline },
-  { id: "kids", label: "Kids", icon: BabyIcon },
-  { id: "accessories", label: "Accessories", icon: WatchIcon },
-  { id: "footwear", label: "Footwear", icon: Footprints },
-];
-
-const brandsWithIcon = [
-  { id: "nike", label: "Nike", icon: SiNike },
-  { id: "adidas", label: "Adidas", icon: SiAdidas },
-  { id: "puma", label: "Puma", icon: SiPuma },
-  { id: "levi", label: "Levi's", icon: PiPantsLight },
-  { id: "zara", label: "Zara", icon: SiZara },
-  { id: "h&m", label: "H&M", icon: IoShirtOutline },
-];
 
 
 function ShoppingHome() {
