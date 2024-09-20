@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import './App.css';
 import NotFound from './pages/not-found';
 import Loader from "./components/common/loader";
 
