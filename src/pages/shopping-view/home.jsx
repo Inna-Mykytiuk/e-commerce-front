@@ -111,7 +111,7 @@ function ShoppingHome() {
                 alt={slide?.title}
                 className="w-full h-full object-cover object-top hidden sm:block"
               />
-              <h2 className="font-bold absolute top-[110px] left-[65px] md:left-[100px] flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700 ml-[-20px] sm:ml-0">{slide?.title}</h2>
+              <h2 className="container font-bold absolute top-[110px] left-[65px] md:left-[100px] flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700 ml-[-20px] sm:ml-0">{slide?.title}</h2>
             </div>
           ))
           : null}
