@@ -25,7 +25,7 @@ function CommonForm({ formControls, formData, setFormData, onSubmit, isBtnDisabl
             type={getControlItem.type}
             name={getControlItem.name}
             placeholder={getControlItem.placeholder}
-            className="shadow-md"
+            className="shadow-md placeholder:text-base"
             value={value}
             onChange={(event) =>
               setFormData({
@@ -76,7 +76,7 @@ function CommonForm({ formControls, formData, setFormData, onSubmit, isBtnDisabl
         element = (
           <Input
             name={getControlItem.name}
-            className="shadow-md"
+            className="shadow-md placeholder:text-base"
             placeholder={getControlItem.placeholder}
             id={getControlItem.name}
             type={getControlItem.type}
