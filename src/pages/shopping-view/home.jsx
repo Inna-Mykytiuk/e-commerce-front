@@ -102,7 +102,7 @@ function ShoppingHome() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* <div className="hidden md:block relative w-full h-[450px] sm:h-[600px] overflow-hidden xl:h-[800px]">
+      <div className="hidden md:block relative w-full h-[450px] sm:h-[600px] overflow-hidden xl:h-[800px]">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
             <div key={index} className={` absolute inset-0 transition-opacity duration-1000 bg-gradient ${index === currentSlide ? "opacity-100" : "opacity-0"}`}>
@@ -144,9 +144,9 @@ function ShoppingHome() {
         </Button>
       </div>
 
-      <div className='container bg-gradient flex items-center justify-center md:hidden py-[150px]'>
+      <div className="container bg-gradient flex items-center justify-center md:hidden py-[150px]">
         <h2 className="font-bold flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700">We Picked Every Item With Care, You must try at leact once</h2>
-      </div> */}
+      </div>
 
 
       <section className="py-12 md:py-20 bg-gray-50">
@@ -173,8 +173,8 @@ function ShoppingHome() {
         </div>
       </section>
 
-      {/* <section className="py-12 md:py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="container">
           <h2 className="text-3xl font-bold text-center mb-8">Shop by Brand</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {brandsWithIcon.map((brandItem) => (
@@ -191,10 +191,10 @@ function ShoppingHome() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4">
+      <section className="py-12 md:py-20">
+        <div className="container">
           <h2 className="text-3xl font-bold text-center mb-8">
             Feature Products
           </h2>
@@ -227,7 +227,7 @@ function ShoppingHome() {
         open={openDetailsDialog}
         setOpen={setOpenDetailsDialog}
         productDetails={productDetails}
-      /> */}
+      />
     </div>
   );
 }
