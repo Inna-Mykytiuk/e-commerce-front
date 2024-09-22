@@ -27,7 +27,9 @@ function MenuItems({ closeMenu, className }) {
         new URLSearchParams(`?category=${getCurrentMenuItem.id}`)
       )
       : navigate(getCurrentMenuItem.path);
-    closeMenu();
+    if (typeof closeMenu === 'function') {
+      closeMenu();
+    }
   }
 
   return (

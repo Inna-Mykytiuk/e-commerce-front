@@ -1,17 +1,24 @@
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
+import { fetchProductDetails } from "@/store/shop/products-slice";
+
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import ShoppingProductTile from "@/components/shopping-view/product-tile";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
-import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
-import { fetchProductDetails } from "@/store/shop/products-slice";
+
 import {
   getSearchResults,
   resetSearchResults,
 } from "@/store/shop/search-slice";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+
+
+import shoppingBag from "../../assets/bags1.jpg";
 
 function SearchProducts() {
   const [keyword, setKeyword] = useState("");
@@ -99,13 +106,26 @@ function SearchProducts() {
               value={keyword}
               name="keyword"
               onChange={(event) => setKeyword(event.target.value)}
-              className="py-6"
-              placeholder="Search Products..."
+              className="py-6 placeholder:text-base shadow-md"
+              placeholder="Search Products by brand or name"
             />
           </div>
         </div>
         {!searchResults.length ? (
-          <h1 className="text-5xl font-extrabold">No result found!</h1>
+          <Card className="h-screen flex flex-col items-center border-none pt-[50px]">
+            <CardHeader className="p-0 mb-8">
+              <CardTitle className="text-4xl">Make Your Choice</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="max-w-[500px] h-full md:h-[500px] rounded-full overflow-hidden">
+                <img
+                  src={shoppingBag}
+                  alt="shopping bag"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            </CardContent>
+          </Card>
         ) : null}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {searchResults.slice(0, visibleProducts).map((item) => (
