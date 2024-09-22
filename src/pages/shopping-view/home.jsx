@@ -102,7 +102,7 @@ function ShoppingHome() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="hidden md:block relative w-full h-[450px] sm:h-[600px] overflow-hidden xl:h-[800px]">
+      {/* <div className="hidden md:block relative w-full h-[450px] sm:h-[600px] overflow-hidden xl:h-[800px]">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
             <div key={index} className={` absolute inset-0 transition-opacity duration-1000 bg-gradient ${index === currentSlide ? "opacity-100" : "opacity-0"}`}>
@@ -146,7 +146,7 @@ function ShoppingHome() {
 
       <div className='container bg-gradient flex items-center justify-center md:hidden py-[150px]'>
         <h2 className="font-bold flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700">We Picked Every Item With Care, You must try at leact once</h2>
-      </div>
+      </div> */}
 
 
       {/* <section className="py-12 md:py-20 bg-gray-50">
@@ -173,7 +173,7 @@ function ShoppingHome() {
         </div>
       </section> */}
 
-      <section className="py-12 md:py-20 bg-gray-50">
+      {/* <section className="py-12 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Shop by Brand</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -183,7 +183,7 @@ function ShoppingHome() {
                 onClick={() => handleNavigateToListingPage(brandItem, "brand")}
                 className="cursor-pointer hover:shadow-custom transition-all ease-in-out group"
               >
-                <CardContent className="flex flex-col items-center justify-center p-6 ">
+                <CardContent className="flex flex-col items-center justify-center p-6">
                   <brandItem.icon className="w-12 h-12 mb-4 text-primary text-gray-600 group-hover:text-accentBlue transition-all ease-in-out " />
                   <span className="font-bold text-gray-600 group-hover:text-accentBlue transition-all ease-in-out ">{brandItem.label}</span>
                 </CardContent>
@@ -191,7 +191,7 @@ function ShoppingHome() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
@@ -223,6 +223,7 @@ function ShoppingHome() {
           )}
         </div>
       </section>
+
       <ProductDetailsDialog
         open={openDetailsDialog}
         setOpen={setOpenDetailsDialog}
