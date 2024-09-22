@@ -102,17 +102,18 @@ function ShoppingHome() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="relative w-full h-[450px] sm:h-[600px] overflow-hidden xl:h-[800px]">
+      <div className="hidden md:block relative w-full h-[450px] sm:h-[600px] overflow-hidden xl:h-[800px]">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
-            <div key={index} className={`absolute inset-0 transition-opacity duration-1000 bg-gradient ${index === currentSlide ? "opacity-100" : "opacity-0"}`}>
+            <div key={index} className={` absolute inset-0 transition-opacity duration-1000 bg-gradient ${index === currentSlide ? "opacity-100" : "opacity-0"}`}>
               <img
                 src={slide?.image}
                 alt={slide?.title}
-                className="w-full h-full object-cover object-top hidden sm:block"
+                className="w-full h-full object-cover object-top"
               />
               <h2 className="container font-bold absolute top-[110px] left-[65px] md:left-[100px] flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700 ml-[-20px] sm:ml-0">{slide?.title}</h2>
             </div>
+
           ))
           : null}
         <Button
@@ -141,6 +142,10 @@ function ShoppingHome() {
         >
           <ChevronRightIcon className="w-4 h-4 ml-[11px]" />
         </Button>
+      </div>
+
+      <div className='container bg-gradient flex items-center justify-center md:hidden py-[150px]'>
+        <h2 className="container font-bold flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700">We Picked Every Item With Care, You must try at leact once</h2>
       </div>
 
 
