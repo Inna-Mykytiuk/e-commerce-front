@@ -145,7 +145,7 @@ function ShoppingHome() {
       </div>
 
       <div className='container bg-gradient flex items-center justify-center md:hidden py-[150px]'>
-        <h2 className="container font-bold flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700">We Picked Every Item With Care, You must try at leact once</h2>
+        <h2 className="font-bold flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700">We Picked Every Item With Care, You must try at leact once</h2>
       </div>
 
 
