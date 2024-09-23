@@ -1,8 +1,6 @@
 import { useEffect } from "react";
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import NotFound from './pages/not-found';
-import Loader from "./components/common/loader";
 
 import AuthLayout from './components/auth/layout';
 import AuthLogin from './pages/auth/login';
@@ -22,6 +20,8 @@ import ShoppingCheckout from './pages/shopping-view/checkout';
 import SearchProducts from "./pages/shopping-view/search";
 
 import UnauthPage from './pages/unauth-page';
+import NotFound from './pages/not-found';
+import Loader from "./components/common/loader";
 
 import PaypalReturnPage from "./pages/shopping-view/paypall-return";
 import PaymentSuccessPage from "./pages/shopping-view/paymant-succes";

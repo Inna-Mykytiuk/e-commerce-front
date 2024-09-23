@@ -7,9 +7,9 @@ function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <Card className="p-10 h-full flex flex-col items-center">
+    <Card className="p-10 h-full flex flex-col items-center border-none">
       <CardHeader className="p-0  mb-8">
-        <CardTitle className="text-4xl">PAge not found</CardTitle>
+        <CardTitle className="text-4xl">Page not found</CardTitle>
       </CardHeader>
       <Button className="mt-5 mb-10" onClick={() => navigate("/shop/account")}>
         Back Home

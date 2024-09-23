@@ -96,9 +96,6 @@ function ShoppingHome() {
     dispatch(getFeatureImages());
   }, [dispatch]);
 
-  const handleLoadMore = () => {
-    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 8);
-  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -215,9 +212,9 @@ function ShoppingHome() {
               <Button
                 variant="outline"
                 className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 hover:text-white"
-                onClick={handleLoadMore}
+                onClick={() => navigate('/shop/listing')}
               >
-                Load More
+                See More Products
               </Button>
             </div>
           )}
