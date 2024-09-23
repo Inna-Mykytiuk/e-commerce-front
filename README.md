@@ -136,6 +136,6 @@ Welcome to Ecommerce, an online store that specializes in selling branded clothi
 
 Enjoy shopping with **Ecommerce**!
 
-![preview](https://github.com/Inna-Mykytiuk/polish-test/blob/main/public/presentation1.jpg)
-![preview](https://github.com/Inna-Mykytiuk/polish-test/blob/main/public/presentation2.jpg)
-![preview](https://github.com/Inna-Mykytiuk/polish-test/blob/main/public/presentation3.jpg)
+![preview](https://github.com/Inna-Mykytiuk/e-commerce-front/blob/main/public/presentation1.jpg)
+![preview](https://github.com/Inna-Mykytiuk/e-commerce-front/blob/main/public/presentation2.jpg)
+![preview](https://github.com/Inna-Mykytiuk/e-commerce-front/blob/main/public/presentation3.jpg)
