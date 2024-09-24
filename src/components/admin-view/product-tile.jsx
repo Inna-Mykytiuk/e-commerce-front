@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
+import { brandOptionsMap, categoryOptionsMap } from "@/config";
 
 function AdminProductTile({
   product,
@@ -24,6 +25,14 @@ function AdminProductTile({
         </div>
         <CardContent>
           <h2 className="text-xl font-bold mb-2 mt-2">{product?.title}</h2>
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-[16px] text-muted-foreground">
+              {categoryOptionsMap[product?.category]}
+            </span>
+            <span className="text-[16px] text-muted-foreground">
+              {brandOptionsMap[product?.brand]}
+            </span>
+          </div>
           <div className="flex justify-between items-center mb-2">
             {product?.salePrice > 0 ? (
               <span className={`${product?.salePrice > 0 ? "line-through" : ""} text-lg font-semibold text-primary text-start`}>${product?.salePrice}</span>
@@ -60,6 +69,8 @@ AdminProductTile.propTypes = {
     salePrice: PropTypes.number,
     price: PropTypes.number,
     _id: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    brand: PropTypes.string.isRequired,
   }).isRequired,
   setFormData: PropTypes.func.isRequired,
   setOpenCreateProductsDialog: PropTypes.func.isRequired,
