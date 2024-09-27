@@ -1,35 +1,12 @@
 import PropTypes from "prop-types";
 
-import {
-  BadgeCheck,
-  ChartNoAxesCombined,
-  LayoutDashboard,
-  ShoppingBasket,
-} from "lucide-react";
+import { ChartNoAxesCombined } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "../ui/sheet";
+import { adminSidebarMenuItems } from "@/lib/icons";
 
-const adminSidebarMenuItems = [
-  {
-    id: "dashboard",
-    label: "Dashboard",
-    path: "/admin/dashboard",
-    icon: <LayoutDashboard />,
-  },
-  {
-    id: "products",
-    label: "Products",
-    path: "/admin/products",
-    icon: <ShoppingBasket />,
-  },
-  {
-    id: "orders",
-    label: "Orders",
-    path: "/admin/orders",
-    icon: <BadgeCheck />,
-  },
-];
+
 
 function MenuItems({ setOpen }) {
   const navigate = useNavigate();
