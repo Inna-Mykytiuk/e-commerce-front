@@ -1,8 +1,8 @@
+import { brandOptionsMap, categoryOptionsMap } from "@/config";
 import PropTypes from "prop-types";
 
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
-import { brandOptionsMap, categoryOptionsMap } from "@/config";
 
 function AdminProductTile({
   product,
@@ -12,18 +12,18 @@ function AdminProductTile({
   handleDelete,
 }) {
   return (
-    <Card className="w-full max-w-sm mx-auto shadow-md hover:shadow-custom transition-all ease-in-out">
+    <Card className="mx-auto w-full max-w-sm shadow-md transition-all ease-in-out hover:shadow-custom">
       <div>
         <div className="relative">
           <img
             src={product?.image}
             alt={product?.title}
-            className="w-full h-[300px] object-cover"
+            className="h-[300px] w-full object-cover"
           />
         </div>
         <CardContent>
-          <h2 className="text-xl font-bold mb-2 mt-2">{product?.title}</h2>
-          <div className="flex justify-between items-center mb-2">
+          <h2 className="mb-2 mt-2 text-xl font-bold">{product?.title}</h2>
+          <div className="mb-2 flex items-center justify-between">
             <span className="text-[16px] text-muted-foreground">
               {categoryOptionsMap[product?.category]}
             </span>
@@ -31,10 +31,10 @@ function AdminProductTile({
               {brandOptionsMap[product?.brand]}
             </span>
           </div>
-          <div className="flex justify-between items-center mb-2">
+          <div className="mb-2 flex items-center justify-between">
             {product?.salePrice > 0 ? (
               <span
-                className={`${product?.salePrice > 0 ? "line-through" : ""} text-lg font-semibold text-primary text-start`}
+                className={`${product?.salePrice > 0 ? "line-through" : ""} text-start text-lg font-semibold text-primary`}
               >
                 ${product?.salePrice}
               </span>
@@ -44,7 +44,7 @@ function AdminProductTile({
             </span>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between items-center">
+        <CardFooter className="flex items-center justify-between">
           <Button
             onClick={() => {
               setOpenCreateProductsDialog(true);

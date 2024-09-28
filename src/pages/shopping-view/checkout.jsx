@@ -1,11 +1,13 @@
 import Address from "@/components/shopping-view/address";
-import img from "../../assets/account.jpg";
-import { useDispatch, useSelector } from "react-redux";
 import UserCartItemsContent from "@/components/shopping-view/cart-items-content";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { createNewOrder } from "@/store/shop/order-slice";
 import { useToast } from "@/components/ui/use-toast";
+import { createNewOrder } from "@/store/shop/order-slice";
+
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import img from "../../assets/account.jpg";
 
 function ShoppingCheckout() {
   const { cartItems } = useSelector((state) => state.shopCart);
@@ -96,7 +98,7 @@ function ShoppingCheckout() {
       <div className="relative h-[300px] w-full overflow-hidden">
         <img src={img} className="h-full w-full object-cover object-center" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 p-5">
+      <div className="mt-5 grid grid-cols-1 gap-5 p-5 md:grid-cols-2">
         <Address
           selectedId={currentSelectedAddress}
           setCurrentSelectedAddress={setCurrentSelectedAddress}

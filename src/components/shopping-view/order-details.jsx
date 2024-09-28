@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 import { useSelector } from "react-redux";
+
 import { Badge } from "../ui/badge";
 import { DialogContent, DialogTitle } from "../ui/dialog";
 import { Label } from "../ui/label";
@@ -14,31 +15,31 @@ function ShoppingOrderDetailsView({ orderDetails }) {
       <DialogTitle />
       <div className="grid gap-6">
         <div className="grid gap-2">
-          <div className="flex mt-6 items-center justify-between">
+          <div className="mt-6 flex items-center justify-between">
             <p className="font-medium">Order ID</p>
             <Label>{orderDetails?._id}</Label>
           </div>
-          <div className="flex mt-2 items-center justify-between">
+          <div className="mt-2 flex items-center justify-between">
             <p className="font-medium">Order Date</p>
             <Label>{orderDetails?.orderDate.split("T")[0]}</Label>
           </div>
-          <div className="flex mt-2 items-center justify-between">
+          <div className="mt-2 flex items-center justify-between">
             <p className="font-medium">Order Price</p>
             <Label>${orderDetails?.totalAmount}</Label>
           </div>
-          <div className="flex mt-2 items-center justify-between">
+          <div className="mt-2 flex items-center justify-between">
             <p className="font-medium">Payment method</p>
             <Label>{orderDetails?.paymentMethod}</Label>
           </div>
-          <div className="flex mt-2 items-center justify-between">
+          <div className="mt-2 flex items-center justify-between">
             <p className="font-medium">Payment Status</p>
             <Label>{orderDetails?.paymentStatus}</Label>
           </div>
-          <div className="flex mt-2 items-center justify-between">
+          <div className="mt-2 flex items-center justify-between">
             <p className="font-medium">Order Status</p>
             <Label>
               <Badge
-                className={`py-1 px-3 ${
+                className={`px-3 py-1 ${
                   orderDetails?.orderStatus === "confirmed"
                     ? "bg-green-500"
                     : orderDetails?.orderStatus === "rejected"

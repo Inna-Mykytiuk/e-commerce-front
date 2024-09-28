@@ -1,23 +1,17 @@
+import { BabyIcon, Footprints, ShirtIcon, WatchIcon } from "lucide-react";
+
+import { AiFillInstagram } from "react-icons/ai";
 import {
   FaFacebookF,
-  FaLinkedinIn,
-  FaTwitter,
   FaGithubAlt,
+  FaLinkedinIn,
   FaTelegramPlane,
+  FaTwitter,
 } from "react-icons/fa";
-import { AiFillInstagram } from "react-icons/ai";
-
-import {
-  BabyIcon,
-  Footprints,
-  ShirtIcon,
-  WatchIcon,
-} from "lucide-react";
-
 import { IoWomanOutline } from "react-icons/io5";
 import { IoShirtOutline } from "react-icons/io5";
-import { SiNike, SiAdidas, SiPuma, SiZara } from "react-icons/si";
 import { PiPantsLight } from "react-icons/pi";
+import { SiAdidas, SiNike, SiPuma, SiZara } from "react-icons/si";
 
 export const iconComponents = {
   FaFacebookF,
@@ -44,5 +38,3 @@ export const brandsWithIcon = [
   { id: "zara", label: "Zara", icon: SiZara },
   { id: "h&m", label: "H&M", icon: IoShirtOutline },
 ];
-
-

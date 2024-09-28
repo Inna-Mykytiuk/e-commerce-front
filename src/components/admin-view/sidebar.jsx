@@ -1,21 +1,20 @@
-import PropTypes from "prop-types";
-
 import {
+  BadgeCheck,
   ChartNoAxesCombined,
   LayoutDashboard,
   ShoppingBasket,
-  BadgeCheck
 } from "lucide-react";
+import PropTypes from "prop-types";
 
 import { useNavigate } from "react-router-dom";
+
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetDescription,
 } from "../ui/sheet";
-
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const adminSidebarMenuItems = [
@@ -43,7 +42,7 @@ function MenuItems({ setOpen }) {
   const navigate = useNavigate();
 
   return (
-    <nav className="mt-8 flex-col flex gap-2">
+    <nav className="mt-8 flex flex-col gap-2">
       {adminSidebarMenuItems.map((menuItem) => (
         <div
           key={menuItem.id}
@@ -51,7 +50,7 @@ function MenuItems({ setOpen }) {
             navigate(menuItem.path);
             setOpen ? setOpen(false) : null;
           }}
-          className="flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground"
+          className="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-xl text-muted-foreground hover:bg-muted hover:text-foreground"
         >
           {menuItem.icon}
           <span>{menuItem.label}</span>
@@ -68,9 +67,9 @@ function AdminSideBar({ open, setOpen }) {
     <>
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent side="left" className="w-64" aria-describedby={undefined}>
-          <div className="flex flex-col h-full">
+          <div className="flex h-full flex-col">
             <SheetHeader className="border-b">
-              <SheetTitle className="flex gap-2 mt-5 mb-5">
+              <SheetTitle className="mb-5 mt-5 flex gap-2">
                 <SheetDescription />
                 <ChartNoAxesCombined size={30} />
                 <p className="text-2xl font-extrabold">Admin Panel</p>

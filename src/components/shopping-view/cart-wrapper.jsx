@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 
 import { useNavigate } from "react-router-dom";
+
 import { Button } from "../ui/button";
 import {
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetDescription,
 } from "../ui/sheet";
 import UserCartItemsContent from "./cart-items-content";
 
@@ -27,7 +28,7 @@ function UserCartWrapper({ cartItems, setOpenCartSheet }) {
       : 0;
 
   return (
-    <SheetContent className="w-full sm:max-w-md overflow-auto max-h-full">
+    <SheetContent className="max-h-full w-full overflow-auto sm:max-w-md">
       <SheetHeader>
         <SheetTitle>Your Cart</SheetTitle>
         <SheetDescription />
@@ -50,7 +51,7 @@ function UserCartWrapper({ cartItems, setOpenCartSheet }) {
           navigate("/shop/checkout");
           setOpenCartSheet(false);
         }}
-        className="w-full mt-6"
+        className="mt-6 w-full"
         aria-hidden={false}
       >
         Checkout

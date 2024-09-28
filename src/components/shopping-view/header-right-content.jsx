@@ -1,7 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { resetTokenAndCredentials } from "@/store/auth-slice";
+import { fetchCartItems } from "@/store/shop/cart-slice";
 import { LogOut, ShoppingCart, UserCog } from "lucide-react";
+
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { Avatar, AvatarFallback } from "../ui/avatar";
+import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,12 +16,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Avatar, AvatarFallback } from "../ui/avatar";
-import { Sheet, SheetTrigger, SheetContent } from "../ui/sheet";
-import { Button } from "../ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import UserCartWrapper from "./cart-wrapper";
-import { resetTokenAndCredentials } from "@/store/auth-slice";
-import { fetchCartItems } from "@/store/shop/cart-slice";
 
 function HeaderRightContent() {
   const { user } = useSelector((state) => state.auth);
@@ -39,7 +41,7 @@ function HeaderRightContent() {
   }
 
   return (
-    <div className="flex lg:items-center flex-row gap-4 relative z-40">
+    <div className="relative z-40 flex flex-row gap-4 lg:items-center">
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
         <Button
           onClick={(event) => {
@@ -48,11 +50,11 @@ function HeaderRightContent() {
           }}
           variant="outline"
           size="icon"
-          className="relative transition-all ease-in-out hover:text-accentBlue group"
+          className="group relative transition-all ease-in-out hover:text-accentBlue"
           aria-hidden="false"
         >
-          <ShoppingCart className="w-6 h-6" />
-          <span className="absolute top-[-10px] right-[-10px] font-bold text-sm text-white bg-primary rounded-full w-5 h-5 flex items-center justify-center transition-all ease-in-out group-hover:bg-accentBlue">
+          <ShoppingCart className="h-6 w-6" />
+          <span className="absolute right-[-10px] top-[-10px] flex h-5 w-5 items-center justify-center rounded-full bg-primary text-sm font-bold text-white transition-all ease-in-out group-hover:bg-accentBlue">
             {cartItems?.items?.length || 0}
           </span>
           <span className="sr-only">User cart</span>
@@ -69,8 +71,8 @@ function HeaderRightContent() {
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Avatar className="bg-gray-800 cursor-pointer">
-            <AvatarFallback className="bg-gray-800 text-white font-extrabold">
+          <Avatar className="cursor-pointer bg-gray-800">
+            <AvatarFallback className="bg-gray-800 font-extrabold text-white">
               {user?.userName[0].toUpperCase()}
             </AvatarFallback>
           </Avatar>

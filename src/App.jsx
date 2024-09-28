@@ -1,31 +1,27 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes } from "react-router-dom";
 
+import AdminLayout from "./components/admin-view/layout";
 import AuthLayout from "./components/auth/layout";
+import CheckAuth from "./components/common/check-auth";
+import Loader from "./components/common/loader";
+import ShoppingLayout from "./components/shopping-view/layout";
+import AdminDashboard from "./pages/admin-view/dashboard";
+import AdminFeatures from "./pages/admin-view/features";
+import AdminOrders from "./pages/admin-view/orders";
+import AdminProducts from "./pages/admin-view/products";
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
-import AdminLayout from "./components/admin-view/layout";
-import AdminDashboard from "./pages/admin-view/dashboard";
-import AdminProducts from "./pages/admin-view/products";
-import AdminOrders from "./pages/admin-view/orders";
-import AdminFeatures from "./pages/admin-view/features";
-
-import ShoppingLayout from "./components/shopping-view/layout";
-import CheckAuth from "./components/common/check-auth";
-import ShoppingHome from "./pages/shopping-view/home";
-import ShoppingListing from "./pages/shopping-view/listing";
+import NotFound from "./pages/not-found";
 import ShoppingAccount from "./pages/shopping-view/account";
 import ShoppingCheckout from "./pages/shopping-view/checkout";
-import SearchProducts from "./pages/shopping-view/search";
-
-import UnauthPage from "./pages/unauth-page";
-import NotFound from "./pages/not-found";
-import Loader from "./components/common/loader";
-
-import PaypalReturnPage from "./pages/shopping-view/paypall-return";
+import ShoppingHome from "./pages/shopping-view/home";
+import ShoppingListing from "./pages/shopping-view/listing";
 import PaymentSuccessPage from "./pages/shopping-view/paymant-succes";
-
+import PaypalReturnPage from "./pages/shopping-view/paypall-return";
+import SearchProducts from "./pages/shopping-view/search";
+import UnauthPage from "./pages/unauth-page";
 import { checkAuth } from "./store/auth-slice";
 
 function App() {
@@ -42,7 +38,7 @@ function App() {
 
   if (isLoading)
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex h-screen items-center justify-center">
         <Loader />
       </div>
     );

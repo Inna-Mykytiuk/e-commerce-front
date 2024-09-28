@@ -1,8 +1,10 @@
-import PropTypes from "prop-types";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { Label } from "../ui/label";
-import { cn } from "@/lib/utils";
 import { shoppingViewHeaderMenuItems } from "@/config";
+import { cn } from "@/lib/utils";
+import PropTypes from "prop-types";
+
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+
+import { Label } from "../ui/label";
 
 function MenuItems({ closeMenu, className }) {
   const navigate = useNavigate();
@@ -33,12 +35,12 @@ function MenuItems({ closeMenu, className }) {
   }
 
   return (
-    <nav className="flex flex-col lg:mb-0 justify-center items-center gap-6 lg:flex-row py-[100px]">
+    <nav className="flex flex-col items-center justify-center gap-6 py-[100px] lg:mb-0 lg:flex-row">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
           className={cn(
-            "text-lg font-medium cursor-pointer transition-all ease-in-out hover:text-accentBlue",
+            "cursor-pointer text-lg font-medium transition-all ease-in-out hover:text-accentBlue",
             className,
           )}
           key={menuItem.id}

@@ -1,11 +1,12 @@
+import axios from "axios";
+import { FileIcon, UploadCloudIcon, XIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
-import { FileIcon, UploadCloudIcon, XIcon } from "lucide-react";
+import { useEffect, useRef } from "react";
+
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { useEffect, useRef } from "react";
-import { Button } from "../ui/button";
-import axios from "axios";
 import { Skeleton } from "../ui/skeleton";
 
 function ProductImageUpload({
@@ -63,16 +64,14 @@ function ProductImageUpload({
   }, [imageFile]);
 
   return (
-    <div
-      className={`w-full  mt-4 ${isCustomStyling ? "" : "max-w-md mx-auto"}`}
-    >
-      <Label className="text-lg font-semibold mb-2 block">Upload Image</Label>
+    <div className={`mt-4 w-full ${isCustomStyling ? "" : "mx-auto max-w-md"}`}>
+      <Label className="mb-2 block text-lg font-semibold">Upload Image</Label>
       <div
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         className={`${
           isEditMode ? "opacity-60" : ""
-        } border-2 border-dashed rounded-lg p-4`}
+        } rounded-lg border-2 border-dashed p-4`}
       >
         <Input
           id="image-upload"
@@ -87,9 +86,9 @@ function ProductImageUpload({
             htmlFor="image-upload"
             className={`${
               isEditMode ? "cursor-not-allowed" : ""
-            } flex flex-col items-center justify-center h-32 cursor-pointer`}
+            } flex h-32 cursor-pointer flex-col items-center justify-center`}
           >
-            <UploadCloudIcon className="w-10 h-10 text-muted-foreground mb-2" />
+            <UploadCloudIcon className="mb-2 h-10 w-10 text-muted-foreground" />
             <span>Drag & drop or click to upload image</span>
           </Label>
         ) : imageLoadingState ? (
@@ -97,7 +96,7 @@ function ProductImageUpload({
         ) : (
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <FileIcon className="w-8 text-primary mr-2 h-8" />
+              <FileIcon className="mr-2 h-8 w-8 text-primary" />
             </div>
             <p className="text-sm font-medium">{imageFile.name}</p>
             <Button
@@ -106,7 +105,7 @@ function ProductImageUpload({
               className="text-muted-foreground hover:text-foreground"
               onClick={handleRemoveImage}
             >
-              <XIcon className="w-4 h-4" />
+              <XIcon className="h-4 w-4" />
               <span className="sr-only">Remove File</span>
             </Button>
           </div>

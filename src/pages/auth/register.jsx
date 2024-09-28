@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import CommonForm from "@/components/common/form";
 import { useToast } from "@/components/ui/use-toast";
 import { registerFormControls } from "@/config";
 import { registerUser } from "@/store/auth-slice";
-import CommonForm from "@/components/common/form";
+
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   userName: "",
@@ -38,14 +39,14 @@ function AuthRegister() {
 
   return (
     <div className="container mx-auto w-full max-w-md">
-      <div className="text-center mb-8">
+      <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">
           Create new account
         </h1>
         <p className="mt-2">
           Already have an account
           <Link
-            className="font-medium ml-2 text-primary hover:underline"
+            className="ml-2 font-medium text-primary hover:underline"
             to="/auth/login"
           >
             Login

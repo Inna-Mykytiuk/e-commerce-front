@@ -1,17 +1,19 @@
-import { useSelector } from "react-redux";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaShopify } from "react-icons/fa";
 import { Menu } from "lucide-react";
+
+import { useState } from "react";
+import { FaShopify } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { Button } from "../ui/button";
 import {
   Sheet,
-  SheetTrigger,
   SheetContent,
   SheetDescription,
+  SheetTrigger,
 } from "../ui/sheet";
-import MenuItems from "./menu-items";
 import HeaderRightContent from "./header-right-content";
-import { Button } from "../ui/button";
+import MenuItems from "./menu-items";
 
 function ShoppingHeader() {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -30,10 +32,10 @@ function ShoppingHeader() {
       <div className="container flex h-16 items-center justify-between">
         <Link
           to="/shop/home"
-          className="flex items-center gap-2 transition-all ease-in-out hover:text-accentBlue text-gray-800"
+          className="flex items-center gap-2 text-gray-800 transition-all ease-in-out hover:text-accentBlue"
         >
           <FaShopify className="h-6 w-6" />
-          <span className="font-bold font-lg ">Ecommerce</span>
+          <span className="font-lg font-bold">Ecommerce</span>
         </Link>
         {/* Mobile menu */}
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>

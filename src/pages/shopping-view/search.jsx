@@ -1,21 +1,19 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
-import { fetchProductDetails } from "@/store/shop/products-slice";
-
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import ShoppingProductTile from "@/components/shopping-view/product-tile";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
-
+import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
+import { fetchProductDetails } from "@/store/shop/products-slice";
 import {
   getSearchResults,
   resetSearchResults,
 } from "@/store/shop/search-slice";
+
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
 import shoppingBag from "../../assets/bags1.jpg";
 
@@ -95,36 +93,36 @@ function SearchProducts() {
   };
 
   return (
-    <section className="min-h-full flex-col w-full">
-      <div className="container mx-auto md:px-6 px-4 py-8">
-        <div className="flex justify-center mb-8">
-          <div className="w-full flex items-center">
+    <section className="min-h-full w-full flex-col">
+      <div className="container mx-auto px-4 py-8 md:px-6">
+        <div className="mb-8 flex justify-center">
+          <div className="flex w-full items-center">
             <Input
               value={keyword}
               name="keyword"
               onChange={(event) => setKeyword(event.target.value)}
-              className="py-6 placeholder:text-base shadow-md"
+              className="py-6 shadow-md placeholder:text-base"
               placeholder="Search Products by brand or name"
             />
           </div>
         </div>
         {!searchResults.length ? (
-          <Card className="h-screen flex flex-col items-center border-none pt-[50px]">
-            <CardHeader className="p-0 mb-8">
+          <Card className="flex h-screen flex-col items-center border-none pt-[50px]">
+            <CardHeader className="mb-8 p-0">
               <CardTitle className="text-4xl">Make Your Choice</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="max-w-[500px] h-full md:h-[500px] rounded-full overflow-hidden">
+              <div className="h-full max-w-[500px] overflow-hidden rounded-full md:h-[500px]">
                 <img
                   src={shoppingBag}
                   alt="shopping bag"
-                  className="w-full h-full object-cover object-center"
+                  className="h-full w-full object-cover object-center"
                 />
               </div>
             </CardContent>
           </Card>
         ) : null}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {searchResults.slice(0, visibleProducts).map((item) => (
             <ShoppingProductTile
               key={item._id}
@@ -135,10 +133,10 @@ function SearchProducts() {
           ))}
         </div>
         {visibleProducts < searchResults.length && (
-          <div className="text-center mt-8">
+          <div className="mt-8 text-center">
             <Button
               variant="outline"
-              className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 hover:text-white"
+              className="rounded-md bg-primary px-4 py-2 text-white hover:bg-primary/90 hover:text-white"
               onClick={handleLoadMore}
             >
               Load More

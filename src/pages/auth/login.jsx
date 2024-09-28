@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { loginFormControls } from "@/config";
-import { useDispatch } from "react-redux";
-import { useToast } from "@/components/ui/use-toast";
-import { loginUser } from "@/store/auth-slice";
 import CommonForm from "@/components/common/form";
+import { useToast } from "@/components/ui/use-toast";
+import { loginFormControls } from "@/config";
+import { loginUser } from "@/store/auth-slice";
+
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const initialState = {
   email: "",
@@ -35,14 +36,14 @@ function AuthLogin() {
 
   return (
     <div className="container mx-auto w-full max-w-md">
-      <div className="text-center mb-8">
+      <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">
           Sign in to your account
         </h1>
         <p className="mt-2">
           Don&apos;t have any accouny?
           <Link
-            className="font-medium ml-2 text-primary hover:underline"
+            className="ml-2 font-medium text-primary hover:underline"
             to="/auth/register"
           >
             Register

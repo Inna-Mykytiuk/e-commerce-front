@@ -2,13 +2,13 @@ import { Outlet } from "react-router-dom";
 
 function AuthLayout() {
   return (
-    <div className="flex min-h-screen w-full ">
-      <div className="hidden lg:flex items-center justify-center bg-black w-1/2 px-12 bg-shop bg-cover bg-no-repeat bg-center">
-        <div className="text-center text-primary-foreground h-full w-full flex flex-col gap-4 items-center justify-center">
-          <h1 className="text-4xl font-extrabold tracking-tight relative py-[80px] px-[80px] backdrop-blur-md">
+    <div className="flex min-h-screen w-full">
+      <div className="hidden w-1/2 items-center justify-center bg-black bg-shop bg-cover bg-center bg-no-repeat px-12 lg:flex">
+        <div className="flex h-full w-full flex-col items-center justify-center gap-4 text-center text-primary-foreground">
+          <h1 className="relative px-[80px] py-[80px] text-4xl font-extrabold tracking-tight backdrop-blur-md">
             Welcome to ECommerce Shop
             <br />
-            <span className="text-white font-light text-lg">
+            <span className="text-lg font-light text-white">
               `Your Style, Your Choice: Fashion for the Whole Family`
             </span>
           </h1>

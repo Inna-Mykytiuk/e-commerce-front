@@ -1,9 +1,10 @@
+import { deleteCartItem, updateCartQuantity } from "@/store/shop/cart-slice";
+import { Minus, Plus, Trash } from "lucide-react";
 import PropTypes from "prop-types";
 
-import { Minus, Plus, Trash } from "lucide-react";
-import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCartItem, updateCartQuantity } from "@/store/shop/cart-slice";
+
+import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 
 function UserCartItemsContent({ cartItem }) {
@@ -76,11 +77,11 @@ function UserCartItemsContent({ cartItem }) {
       <img
         src={cartItem?.image}
         alt={cartItem?.title}
-        className="w-20 h-20 rounded object-cover"
+        className="h-20 w-20 rounded object-cover"
       />
       <div className="flex-1">
         <h3 className="font-extrabold">{cartItem?.title}</h3>
-        <div className="flex items-center gap-2 mt-1">
+        <div className="mt-1 flex items-center gap-2">
           <Button
             variant="outline"
             className="h-8 w-8 rounded-full"
@@ -88,7 +89,7 @@ function UserCartItemsContent({ cartItem }) {
             disabled={cartItem?.quantity === 1}
             onClick={() => handleUpdateQuantity(cartItem, "minus")}
           >
-            <Minus className="w-4 h-4" />
+            <Minus className="h-4 w-4" />
             <span className="sr-only">Decrease</span>
           </Button>
           <span className="font-semibold">{cartItem?.quantity}</span>
@@ -98,7 +99,7 @@ function UserCartItemsContent({ cartItem }) {
             size="icon"
             onClick={() => handleUpdateQuantity(cartItem, "plus")}
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="h-4 w-4" />
             <span className="sr-only">Decrease</span>
           </Button>
         </div>
@@ -113,7 +114,7 @@ function UserCartItemsContent({ cartItem }) {
         </p>
         <Trash
           onClick={() => handleCartItemDelete(cartItem)}
-          className="cursor-pointer mt-1"
+          className="mt-1 cursor-pointer"
           size={20}
         />
       </div>

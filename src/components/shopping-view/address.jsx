@@ -1,18 +1,19 @@
-import PropTypes from "prop-types";
-
-import { useEffect, useState } from "react";
-import CommonForm from "../common/form";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { addressFormControls } from "@/config";
-import { useDispatch, useSelector } from "react-redux";
 import {
   addNewAddress,
   deleteAddress,
   editaAddress,
   fetchAllAddresses,
 } from "@/store/shop/address-slice";
-import AddressCard from "./address-card";
+import PropTypes from "prop-types";
+
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import CommonForm from "../common/form";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { useToast } from "../ui/use-toast";
+import AddressCard from "./address-card";
 
 const initialAddressFormData = {
   address: "",
@@ -114,7 +115,7 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
 
   return (
     <Card className="border-none">
-      <div className="mb-5 p-3 grid grid-cols-1 md:grid-cols-2  gap-2">
+      <div className="mb-5 grid grid-cols-1 gap-2 p-3 md:grid-cols-2">
         {addressList && addressList.length > 0
           ? addressList.map((singleAddressItem) => (
               <AddressCard

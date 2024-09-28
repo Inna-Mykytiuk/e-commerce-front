@@ -1,6 +1,7 @@
 import ProductImageUpload from "@/components/admin-view/image-upload";
 import { Button } from "@/components/ui/button";
 import { addFeatureImage, getFeatureImages } from "@/store/common-slice";
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -49,20 +50,20 @@ function AdminDashboard() {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Enter title"
-        className="mt-3 p-2 border rounded w-full"
+        className="mt-3 w-full rounded border p-2"
       />
       <Button onClick={handleUploadFeatureImage} className="mt-5 w-full">
         Upload
       </Button>
-      <div className="flex flex-col gap-4 mt-5">
+      <div className="mt-5 flex flex-col gap-4">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((feature) => (
               <div key={feature._id} className="max-h-[300px]">
                 <img
                   src={feature.image}
-                  className="w-full h-[300px] object-cover lg:object-contain rounded-t-lg"
+                  className="h-[300px] w-full rounded-t-lg object-cover lg:object-contain"
                 />
-                <h2 className="font-bold mt-3 relative top-[-250px] left-0 lg:left-[300px] flex max-w-[200px] md:max-w-[400px] text-2xl pl-8 md:pl-[100px]">
+                <h2 className="relative left-0 top-[-250px] mt-3 flex max-w-[200px] pl-8 text-2xl font-bold md:max-w-[400px] md:pl-[100px] lg:left-[300px]">
                   {feature.title}
                 </h2>
               </div>

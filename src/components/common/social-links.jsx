@@ -1,10 +1,9 @@
-import PropTypes from "prop-types";
-
 import { iconComponents } from "@/lib/icons";
+import PropTypes from "prop-types";
 
 const SocialLinks = ({ socialLinks }) => {
   return (
-    <ul className="text-white grid grid-cols-3 gap-4">
+    <ul className="grid grid-cols-3 gap-4 text-white">
       {socialLinks.map((link, index) => {
         const IconComponent = iconComponents[link.icon];
 
@@ -30,12 +29,12 @@ const SocialLinks = ({ socialLinks }) => {
         return (
           <li
             key={index}
-            className="group flex items-center justify-center cursor-pointer transition duration-300 ease-out w-full h-full"
+            className="group flex h-full w-full cursor-pointer items-center justify-center transition duration-300 ease-out"
           >
             <a
               href={link.href}
               aria-label={link.ariaLabel}
-              className={`flex items-center justify-center ${baseColor} h-[35px] w-[35px] bg-white p-1 rounded-full`}
+              className={`flex items-center justify-center ${baseColor} h-[35px] w-[35px] rounded-full bg-white p-1`}
             >
               <IconComponent
                 className={`h-[25px] w-[25px] ${hoverColor} transition duration-300 ease-out`}

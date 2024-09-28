@@ -1,20 +1,19 @@
+import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
+import { setProductDetails } from "@/store/shop/products-slice";
+import { addReview, getReviews } from "@/store/shop/review-slice";
 import PropTypes from "prop-types";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
-import { setProductDetails } from "@/store/shop/products-slice";
-import { addReview, getReviews } from "@/store/shop/review-slice";
-
+import StarRatingComponent from "../common/star-raiting";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
-import { Separator } from "../ui/separator";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { Separator } from "../ui/separator";
 import { useToast } from "../ui/use-toast";
-import StarRatingComponent from "../common/star-raiting";
 
 function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const [reviewMsg, setReviewMsg] = useState("");
@@ -107,7 +106,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
   return (
     <Dialog open={open} onOpenChange={handleDialogClose}>
       <DialogContent
-        className="grid grid-cols-1 md:grid-cols-2  gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw] max-h-[450px] md:max-h-full overflow-auto"
+        className="grid max-h-[450px] max-w-[90vw] grid-cols-1 gap-8 overflow-auto sm:max-w-[80vw] sm:p-12 md:max-h-full md:grid-cols-2 lg:max-w-[70vw]"
         aria-describedby={undefined}
       >
         <div className="relative overflow-hidden">
@@ -123,14 +122,14 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
         <div className="">
           <div>
             <h1 className="text-3xl font-extrabold">{productDetails?.title}</h1>
-            <p className="text-muted-foreground text-[16px] mb-5 mt-4">
+            <p className="mb-5 mt-4 text-[16px] text-muted-foreground">
               {productDetails?.description}
             </p>
           </div>
           <div className="flex items-center justify-between">
             {productDetails?.salePrice > 0 ? (
               <span
-                className={`${productDetails?.salePrice > 0 ? "line-through" : ""} text-2xl font-bold text-primary text-start`}
+                className={`${productDetails?.salePrice > 0 ? "line-through" : ""} text-start text-2xl font-bold text-primary`}
               >
                 ${productDetails?.salePrice}
               </span>
@@ -139,7 +138,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
               {productDetails?.price ? `$${productDetails?.price}` : ""}
             </span>
           </div>
-          <div className="flex items-center gap-2 mt-2">
+          <div className="mt-2 flex items-center gap-2">
             <div className="flex items-center gap-0.5">
               <StarRatingComponent rating={averageReview} />
             </div>
@@ -147,9 +146,9 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
               ({averageReview.toFixed(2)})
             </span>
           </div>
-          <div className="mt-5 mb-5">
+          <div className="mb-5 mt-5">
             {productDetails?.totalStock === 0 ? (
-              <Button className="w-full opacity-60 cursor-not-allowed">
+              <Button className="w-full cursor-not-allowed opacity-60">
                 Out of Stock
               </Button>
             ) : (
@@ -168,12 +167,12 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
           </div>
           <Separator />
           <div className="max-h-[300px] overflow-auto">
-            <h2 className="text-xl font-bold mb-4">Reviews</h2>
+            <h2 className="mb-4 text-xl font-bold">Reviews</h2>
             <div className="grid gap-6">
               {reviews && reviews.length > 0 ? (
                 reviews.map((reviewItem) => (
                   <div key={reviewItem._id} className="flex gap-4">
-                    <Avatar className="w-10 h-10 border">
+                    <Avatar className="h-10 w-10 border">
                       <AvatarFallback>
                         {reviewItem?.userName[0].toUpperCase()}
                       </AvatarFallback>
@@ -195,7 +194,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
                 <h1>No Reviews</h1>
               )}
             </div>
-            <div className="mt-10 flex-col flex gap-2">
+            <div className="mt-10 flex flex-col gap-2">
               <Label>Write a review</Label>
               <div className="flex gap-1">
                 <StarRatingComponent

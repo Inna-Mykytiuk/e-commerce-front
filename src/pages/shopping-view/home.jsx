@@ -1,22 +1,21 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
+import ProductDetailsDialog from "@/components/shopping-view/product-details";
+import ShoppingProductTile from "@/components/shopping-view/product-tile";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
+import { categoriesWithIcon } from "@/lib/icons";
+import { brandsWithIcon } from "@/lib/icons";
 import { getFeatureImages } from "@/store/common-slice";
+import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import {
   fetchAllFilteredProducts,
   fetchProductDetails,
 } from "@/store/shop/products-slice";
-
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { categoriesWithIcon } from "@/lib/icons";
-import { brandsWithIcon } from "@/lib/icons";
 
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
-import { Card, CardContent } from "@/components/ui/card";
-import ShoppingProductTile from "@/components/shopping-view/product-tile";
-import ProductDetailsDialog from "@/components/shopping-view/product-details";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -91,24 +90,24 @@ function ShoppingHome() {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="hidden md:block relative w-full h-[450px] sm:h-[600px] overflow-hidden xl:h-[800px]">
+    <div className="flex min-h-screen flex-col">
+      <div className="relative hidden h-[450px] w-full overflow-hidden sm:h-[600px] md:block xl:h-[800px]">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
-            <div
-              key={index}
-              className={` absolute inset-0 transition-opacity duration-1000 bg-gradient ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
-            >
-              <img
-                src={slide?.image}
-                alt={slide?.title}
-                className="w-full h-full object-cover object-top"
-              />
-              <h2 className="container font-bold absolute top-[110px] left-[65px] md:left-[100px] flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700 ml-[-20px] sm:ml-0">
-                {slide?.title}
-              </h2>
-            </div>
-          ))
+              <div
+                key={index}
+                className={`absolute inset-0 bg-gradient transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
+              >
+                <img
+                  src={slide?.image}
+                  alt={slide?.title}
+                  className="h-full w-full object-cover object-top"
+                />
+                <h2 className="container absolute left-[65px] top-[110px] ml-[-20px] flex max-w-[400px] text-4xl font-bold text-gray-700 sm:ml-0 md:left-[100px] md:text-6xl xl:max-w-[800px] xl:text-8xl">
+                  {slide?.title}
+                </h2>
+              </div>
+            ))
           : null}
         <Button
           variant="outline"
@@ -120,9 +119,9 @@ function ShoppingHome() {
                 featureImageList.length,
             )
           }
-          className="hidden sm:block absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80"
+          className="absolute left-4 top-1/2 hidden -translate-y-1/2 transform bg-white/80 sm:block"
         >
-          <ChevronLeftIcon className="w-4 h-4 ml-[10px]" />
+          <ChevronLeftIcon className="ml-[10px] h-4 w-4" />
         </Button>
         <Button
           variant="outline"
@@ -132,35 +131,35 @@ function ShoppingHome() {
               (prevSlide) => (prevSlide + 1) % featureImageList.length,
             )
           }
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80 hidden sm:block"
+          className="absolute right-4 top-1/2 hidden -translate-y-1/2 transform bg-white/80 sm:block"
         >
-          <ChevronRightIcon className="w-4 h-4 ml-[11px]" />
+          <ChevronRightIcon className="ml-[11px] h-4 w-4" />
         </Button>
       </div>
 
-      <div className="container bg-gradient flex items-center justify-center md:hidden py-[150px]">
-        <h2 className="font-bold flex max-w-[400px] text-4xl md:text-6xl xl:text-8xl xl:max-w-[800px] text-gray-700">
+      <div className="container flex items-center justify-center bg-gradient py-[150px] md:hidden">
+        <h2 className="flex max-w-[400px] text-4xl font-bold text-gray-700 md:text-6xl xl:max-w-[800px] xl:text-8xl">
           We Picked Every Item With Care, You must try at leact once
         </h2>
       </div>
 
-      <section className="py-12 md:py-20 bg-gray-50">
+      <section className="bg-gray-50 py-12 md:py-20">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <h2 className="mb-8 text-center text-3xl font-bold">
             Shop by Category
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
             {categoriesWithIcon.map((categoryItem) => (
               <Card
                 key={categoryItem.id}
                 onClick={() =>
                   handleNavigateToListingPage(categoryItem, "category")
                 }
-                className="cursor-pointer hover:shadow-custom transition-all ease-in-out group"
+                className="group cursor-pointer transition-all ease-in-out hover:shadow-custom"
               >
                 <CardContent className="flex flex-col items-center justify-center p-6">
-                  <categoryItem.icon className="w-12 h-12 mb-4 text-primary text-gray-600 group-hover:text-accentBlue transition-all ease-in-out " />
-                  <span className="font-bold text-gray-600 group-hover:text-accentBlue transition-all ease-in-out ">
+                  <categoryItem.icon className="mb-4 h-12 w-12 text-gray-600 text-primary transition-all ease-in-out group-hover:text-accentBlue" />
+                  <span className="font-bold text-gray-600 transition-all ease-in-out group-hover:text-accentBlue">
                     {categoryItem.label}
                   </span>
                 </CardContent>
@@ -170,19 +169,19 @@ function ShoppingHome() {
         </div>
       </section>
 
-      <section className="py-12 md:py-20 bg-gray-50">
+      <section className="bg-gray-50 py-12 md:py-20">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-8">Shop by Brand</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <h2 className="mb-8 text-center text-3xl font-bold">Shop by Brand</h2>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
             {brandsWithIcon.map((brandItem) => (
               <Card
                 key={brandItem.id}
                 onClick={() => handleNavigateToListingPage(brandItem, "brand")}
-                className="cursor-pointer hover:shadow-custom transition-all ease-in-out group"
+                className="group cursor-pointer transition-all ease-in-out hover:shadow-custom"
               >
-                <CardContent className="flex flex-col items-center justify-center p-6 ">
-                  <brandItem.icon className="w-12 h-12 mb-4 text-primary text-gray-600 group-hover:text-accentBlue transition-all ease-in-out " />
-                  <span className="font-bold text-gray-600 group-hover:text-accentBlue transition-all ease-in-out ">
+                <CardContent className="flex flex-col items-center justify-center p-6">
+                  <brandItem.icon className="mb-4 h-12 w-12 text-gray-600 text-primary transition-all ease-in-out group-hover:text-accentBlue" />
+                  <span className="font-bold text-gray-600 transition-all ease-in-out group-hover:text-accentBlue">
                     {brandItem.label}
                   </span>
                 </CardContent>
@@ -194,10 +193,10 @@ function ShoppingHome() {
 
       <section className="py-12 md:py-20">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <h2 className="mb-8 text-center text-3xl font-bold">
             Feature Products
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {productList && productList.length > 0 ? (
               productList
                 .slice(0, visibleProducts)
@@ -214,10 +213,10 @@ function ShoppingHome() {
             )}
           </div>
           {visibleProducts < productList.length && (
-            <div className="text-center mt-8">
+            <div className="mt-8 text-center">
               <Button
                 variant="outline"
-                className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 hover:text-white"
+                className="rounded-md bg-primary px-4 py-2 text-white hover:bg-primary/90 hover:text-white"
                 onClick={() => navigate("/shop/listing")}
               >
                 See More Products

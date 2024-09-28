@@ -1,26 +1,27 @@
-import React from "react";
+import { filterOptions } from "@/config";
 import PropTypes from "prop-types";
 
-import { filterOptions } from "@/config";
-import { Label } from "../ui/label";
+import React from "react";
+
 import { Checkbox } from "../ui/checkbox";
+import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
 
 function ProductFilter({ filters, handleFilter }) {
   return (
     <div className="bg-background">
-      <div className="p-4 border-b">
+      <div className="border-b p-4">
         <h2 className="text-lg font-extrabold">Filters</h2>
       </div>
-      <div className="p-4 space-y-4">
+      <div className="space-y-4 p-4">
         {Object.keys(filterOptions).map((keyItem) => (
           <React.Fragment key={keyItem}>
             <div>
               <h3 className="text-base font-bold">{keyItem}</h3>
-              <div className="grid gap-2 mt-2">
+              <div className="mt-2 grid gap-2">
                 {filterOptions[keyItem].map((option) => (
                   <Label
-                    className="flex font-medium items-center gap-2"
+                    className="flex items-center gap-2 font-medium"
                     key={option.id}
                   >
                     <Checkbox

@@ -1,24 +1,25 @@
-import { useState, useEffect } from "react";
+import ProductImageUpload from "@/components/admin-view/image-upload";
+import AdminProductTile from "@/components/admin-view/product-tile";
+import CommonForm from "@/components/common/form";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetDescription,
 } from "@/components/ui/sheet";
-import { addProductFormElements } from "@/config";
-import CommonForm from "@/components/common/form";
-import ProductImageUpload from "@/components/admin-view/image-upload";
-import AdminProductTile from "@/components/admin-view/product-tile";
-import { useSelector, useDispatch } from "react-redux";
 import { useToast } from "@/components/ui/use-toast";
+import { addProductFormElements } from "@/config";
 import {
   addNewProduct,
-  fetchAllProducts,
   deleteProduct,
   editProduct,
+  fetchAllProducts,
 } from "@/store/admin/product-slice";
+
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialFormData = {
   image: null,
@@ -105,12 +106,12 @@ function AdminProducts() {
 
   return (
     <>
-      <div className="mb-5 w-full flex justify-end">
+      <div className="mb-5 flex w-full justify-end">
         <Button onClick={() => setOpenCreateProductsDialog(true)}>
           Add New Product
         </Button>
       </div>
-      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4 ">
+      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
         {productList && productList.length > 0
           ? productList
               .slice(0, visibleProducts)
@@ -127,10 +128,10 @@ function AdminProducts() {
           : null}
       </div>
       {visibleProducts < productList.length && (
-        <div className="text-center mt-8">
+        <div className="mt-8 text-center">
           <Button
             variant="outline"
-            className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 hover:text-white"
+            className="rounded-md bg-primary px-4 py-2 text-white hover:bg-primary/90 hover:text-white"
             onClick={handleLoadMore}
           >
             Load More
