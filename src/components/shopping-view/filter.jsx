@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { filterOptions } from "@/config";
 import { Label } from "../ui/label";
@@ -19,7 +19,10 @@ function ProductFilter({ filters, handleFilter }) {
               <h3 className="text-base font-bold">{keyItem}</h3>
               <div className="grid gap-2 mt-2">
                 {filterOptions[keyItem].map((option) => (
-                  <Label className="flex font-medium items-center gap-2" key={option.id}>
+                  <Label
+                    className="flex font-medium items-center gap-2"
+                    key={option.id}
+                  >
                     <Checkbox
                       checked={
                         filters &&
@@ -43,11 +46,8 @@ function ProductFilter({ filters, handleFilter }) {
 }
 
 ProductFilter.propTypes = {
-  filters: PropTypes.objectOf(
-    PropTypes.arrayOf(PropTypes.string)
-  ).isRequired,
+  filters: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
   handleFilter: PropTypes.func.isRequired,
 };
-
 
 export default ProductFilter;

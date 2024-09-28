@@ -12,7 +12,14 @@ import {
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 
-function CommonForm({ formControls, formData, setFormData, onSubmit, isBtnDisabled, buttonText }) {
+function CommonForm({
+  formControls,
+  formData,
+  setFormData,
+  onSubmit,
+  isBtnDisabled,
+  buttonText,
+}) {
   function renderInputsByComponentType(getControlItem) {
     let element = null;
     const value = formData[getControlItem.name] || "";
@@ -40,17 +47,20 @@ function CommonForm({ formControls, formData, setFormData, onSubmit, isBtnDisabl
         element = (
           <Select
             value={value}
-            onValueChange={(value) => setFormData({ ...formData, [getControlItem.name]: value })}>
+            onValueChange={(value) =>
+              setFormData({ ...formData, [getControlItem.name]: value })
+            }
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder={getControlItem.label} />
             </SelectTrigger>
             <SelectContent>
               {getControlItem.options && getControlItem.options.length > 0
                 ? getControlItem.options.map((optionItem) => (
-                  <SelectItem key={optionItem.id} value={optionItem.id}>
-                    {optionItem.label}
-                  </SelectItem>
-                ))
+                    <SelectItem key={optionItem.id} value={optionItem.id}>
+                      {optionItem.label}
+                    </SelectItem>
+                  ))
                 : null}
             </SelectContent>
           </Select>
@@ -105,7 +115,11 @@ function CommonForm({ formControls, formData, setFormData, onSubmit, isBtnDisabl
           </div>
         ))}
       </div>
-      <Button disabled={isBtnDisabled} type="submit" className="mt-6 w-full shadow-lg">
+      <Button
+        disabled={isBtnDisabled}
+        type="submit"
+        className="mt-6 w-full shadow-lg"
+      >
         {buttonText || "Submit"}
       </Button>
     </form>
@@ -124,9 +138,9 @@ CommonForm.propTypes = {
         PropTypes.shape({
           id: PropTypes.string.isRequired,
           label: PropTypes.string.isRequired,
-        })
+        }),
       ),
-    })
+    }),
   ).isRequired,
   formData: PropTypes.object.isRequired,
   setFormData: PropTypes.func.isRequired,

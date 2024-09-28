@@ -17,11 +17,11 @@ export const registerUser = createAsyncThunk(
       formData,
       {
         withCredentials: true,
-      }
+      },
     );
 
     return response.data;
-  }
+  },
 );
 
 export const loginUser = createAsyncThunk(
@@ -33,11 +33,11 @@ export const loginUser = createAsyncThunk(
       formData,
       {
         withCredentials: true,
-      }
+      },
     );
 
     return response.data;
-  }
+  },
 );
 
 export const logoutUser = createAsyncThunk(
@@ -49,11 +49,11 @@ export const logoutUser = createAsyncThunk(
       {},
       {
         withCredentials: true,
-      }
+      },
     );
 
     return response.data;
-  }
+  },
 );
 
 // export const checkAuth = createAsyncThunk(
@@ -87,25 +87,25 @@ export const checkAuth = createAsyncThunk(
           "Cache-Control":
             "no-store, no-cache, must-revalidate, proxy-revalidate",
         },
-      }
+      },
     );
 
     return response.data;
-  }
+  },
 );
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action) => { },
+    setUser: (state, action) => {},
     resetTokenAndCredentials: (state) => {
       state.isAuthenticated = false;
       state.user = null;
       state.token = null;
       // state.isLoading = false;
       // sessionStorage.removeItem("token");
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -126,7 +126,6 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-
         state.isLoading = false;
         state.user = action.payload.success ? action.payload.user : null;
         state.isAuthenticated = action.payload.success;

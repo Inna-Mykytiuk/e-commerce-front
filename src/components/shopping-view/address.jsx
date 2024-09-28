@@ -45,40 +45,40 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
 
     currentEditedId !== null
       ? dispatch(
-        editaAddress({
-          userId: user?.id,
-          addressId: currentEditedId,
-          formData,
+          editaAddress({
+            userId: user?.id,
+            addressId: currentEditedId,
+            formData,
+          }),
+        ).then((data) => {
+          if (data?.payload?.success) {
+            dispatch(fetchAllAddresses(user?.id));
+            setCurrentEditedId(null);
+            setFormData(initialAddressFormData);
+            toast({
+              title: "Address updated successfully",
+            });
+          }
         })
-      ).then((data) => {
-        if (data?.payload?.success) {
-          dispatch(fetchAllAddresses(user?.id));
-          setCurrentEditedId(null);
-          setFormData(initialAddressFormData);
-          toast({
-            title: "Address updated successfully",
-          });
-        }
-      })
       : dispatch(
-        addNewAddress({
-          ...formData,
-          userId: user?.id,
-        })
-      ).then((data) => {
-        if (data?.payload?.success) {
-          dispatch(fetchAllAddresses(user?.id));
-          setFormData(initialAddressFormData);
-          toast({
-            title: "Address added successfully",
-          });
-        }
-      });
+          addNewAddress({
+            ...formData,
+            userId: user?.id,
+          }),
+        ).then((data) => {
+          if (data?.payload?.success) {
+            dispatch(fetchAllAddresses(user?.id));
+            setFormData(initialAddressFormData);
+            toast({
+              title: "Address added successfully",
+            });
+          }
+        });
   }
 
   function handleDeleteAddress(getCurrentAddress) {
     dispatch(
-      deleteAddress({ userId: user?.id, addressId: getCurrentAddress._id })
+      deleteAddress({ userId: user?.id, addressId: getCurrentAddress._id }),
     ).then((data) => {
       if (data?.payload?.success) {
         dispatch(fetchAllAddresses(user?.id));
@@ -112,21 +112,20 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
-
   return (
     <Card className="border-none">
       <div className="mb-5 p-3 grid grid-cols-1 md:grid-cols-2  gap-2">
         {addressList && addressList.length > 0
           ? addressList.map((singleAddressItem) => (
-            <AddressCard
-              key={singleAddressItem?._id}
-              selectedId={selectedId}
-              handleDeleteAddress={handleDeleteAddress}
-              addressInfo={singleAddressItem}
-              handleEditAddress={handleEditAddress}
-              setCurrentSelectedAddress={setCurrentSelectedAddress}
-            />
-          ))
+              <AddressCard
+                key={singleAddressItem?._id}
+                selectedId={selectedId}
+                handleDeleteAddress={handleDeleteAddress}
+                addressInfo={singleAddressItem}
+                handleEditAddress={handleEditAddress}
+                setCurrentSelectedAddress={setCurrentSelectedAddress}
+              />
+            ))
           : null}
       </div>
       <CardHeader>

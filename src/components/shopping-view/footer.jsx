@@ -9,9 +9,7 @@ import { IoIosHeart } from "react-icons/io";
 import data from "../../data/footer.json";
 import SocialLinks from "../common/social-links";
 
-
 export default function Footer() {
-
   const {
     title,
     description,
@@ -27,9 +25,7 @@ export default function Footer() {
   } = data;
 
   return (
-    <section
-      className="relative w-full bg-[#0f172a] py-[30px] md:py-[50px]"
-    >
+    <section className="relative w-full bg-[#0f172a] py-[30px] md:py-[50px]">
       <div className="container">
         <div className="flex flex-col xl:flex-row xl:pb-[50px] border-b-[1px] border-white mb-[30px] pb-[30px]">
           <div className="flex flex-col max-w-full xl:max-w-[40%]">

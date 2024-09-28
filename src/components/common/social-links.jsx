@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 
 import { iconComponents } from "@/lib/icons";
 
-
 const SocialLinks = ({ socialLinks }) => {
   return (
     <ul className="text-white grid grid-cols-3 gap-4">
@@ -49,14 +48,13 @@ const SocialLinks = ({ socialLinks }) => {
   );
 };
 
-
 SocialLinks.propTypes = {
   socialLinks: PropTypes.arrayOf(
     PropTypes.shape({
       href: PropTypes.string.isRequired,
       ariaLabel: PropTypes.string.isRequired,
       icon: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
 };
 

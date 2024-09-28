@@ -17,7 +17,6 @@ import {
   resetSearchResults,
 } from "@/store/shop/search-slice";
 
-
 import shoppingBag from "../../assets/bags1.jpg";
 
 function SearchProducts() {
@@ -33,7 +32,6 @@ function SearchProducts() {
 
   const { cartItems } = useSelector((state) => state.shopCart);
   const { toast } = useToast();
-
 
   useEffect(() => {
     if (keyword && keyword.trim() !== "" && keyword.trim().length > 3) {
@@ -53,7 +51,7 @@ function SearchProducts() {
 
     if (getCartItems.length) {
       const indexOfCurrentItem = getCartItems.findIndex(
-        (item) => item.productId === getCurrentProductId
+        (item) => item.productId === getCurrentProductId,
       );
       if (indexOfCurrentItem > -1) {
         const getQuantity = getCartItems[indexOfCurrentItem].quantity;
@@ -73,7 +71,7 @@ function SearchProducts() {
         userId: user?.id,
         productId: getCurrentProductId,
         quantity: 1,
-      })
+      }),
     ).then((data) => {
       if (data?.payload?.success) {
         dispatch(fetchCartItems(user?.id));
@@ -95,7 +93,6 @@ function SearchProducts() {
   const handleLoadMore = () => {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 8);
   };
-
 
   return (
     <section className="min-h-full flex-col w-full">

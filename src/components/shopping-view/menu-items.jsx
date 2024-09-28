@@ -13,21 +13,21 @@ function MenuItems({ closeMenu, className }) {
     sessionStorage.removeItem("filters");
     const currentFilter =
       getCurrentMenuItem.id !== "home" &&
-        getCurrentMenuItem.id !== "products" &&
-        getCurrentMenuItem.id !== "search"
+      getCurrentMenuItem.id !== "products" &&
+      getCurrentMenuItem.id !== "search"
         ? {
-          category: [getCurrentMenuItem.id],
-        }
+            category: [getCurrentMenuItem.id],
+          }
         : null;
 
     sessionStorage.setItem("filters", JSON.stringify(currentFilter));
 
     location.pathname.includes("listing") && currentFilter !== null
       ? setSearchParams(
-        new URLSearchParams(`?category=${getCurrentMenuItem.id}`)
-      )
+          new URLSearchParams(`?category=${getCurrentMenuItem.id}`),
+        )
       : navigate(getCurrentMenuItem.path);
-    if (typeof closeMenu === 'function') {
+    if (typeof closeMenu === "function") {
       closeMenu();
     }
   }
@@ -37,7 +37,10 @@ function MenuItems({ closeMenu, className }) {
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
-          className={cn("text-lg font-medium cursor-pointer transition-all ease-in-out hover:text-accentBlue", className)}
+          className={cn(
+            "text-lg font-medium cursor-pointer transition-all ease-in-out hover:text-accentBlue",
+            className,
+          )}
           key={menuItem.id}
         >
           {menuItem.label}
@@ -49,7 +52,7 @@ function MenuItems({ closeMenu, className }) {
 
 MenuItems.propTypes = {
   closeMenu: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default MenuItems;

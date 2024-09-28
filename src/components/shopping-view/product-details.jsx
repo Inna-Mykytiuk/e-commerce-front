@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,6 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { useToast } from "../ui/use-toast";
 import StarRatingComponent from "../common/star-raiting";
-
 
 function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const [reviewMsg, setReviewMsg] = useState("");
@@ -36,7 +35,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
 
     if (getCartItems.length) {
       const indexOfCurrentItem = getCartItems.findIndex(
-        (item) => item.productId === getCurrentProductId
+        (item) => item.productId === getCurrentProductId,
       );
       if (indexOfCurrentItem > -1) {
         const getQuantity = getCartItems[indexOfCurrentItem].quantity;
@@ -55,7 +54,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
         userId: user?.id,
         productId: getCurrentProductId,
         quantity: 1,
-      })
+      }),
     ).then((data) => {
       if (data?.payload?.success) {
         dispatch(fetchCartItems(user?.id));
@@ -81,7 +80,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
         userName: user?.userName,
         reviewMessage: reviewMsg,
         reviewValue: rating,
-      })
+      }),
     ).then((data) => {
       if (data.payload.success) {
         setRating(0);
@@ -99,20 +98,17 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productDetails]);
 
-
   const averageReview =
     reviews && reviews.length > 0
       ? reviews.reduce((sum, reviewItem) => sum + reviewItem.reviewValue, 0) /
-      reviews.length
+        reviews.length
       : 0;
 
   return (
-    <Dialog
-      open={open}
-      onOpenChange={handleDialogClose}
-    >
-      <DialogContent className="grid grid-cols-1 md:grid-cols-2  gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw] max-h-[450px] md:max-h-full overflow-auto" aria-describedby={undefined}
-
+    <Dialog open={open} onOpenChange={handleDialogClose}>
+      <DialogContent
+        className="grid grid-cols-1 md:grid-cols-2  gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw] max-h-[450px] md:max-h-full overflow-auto"
+        aria-describedby={undefined}
       >
         <div className="relative overflow-hidden">
           <DialogTitle />
@@ -126,20 +122,20 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
         </div>
         <div className="">
           <div>
-            <h1 className="text-3xl font-extrabold">
-              {productDetails?.title}
-            </h1>
+            <h1 className="text-3xl font-extrabold">{productDetails?.title}</h1>
             <p className="text-muted-foreground text-[16px] mb-5 mt-4">
               {productDetails?.description}
             </p>
           </div>
           <div className="flex items-center justify-between">
             {productDetails?.salePrice > 0 ? (
-              <span className={`${productDetails?.salePrice > 0 ? "line-through" : ""} text-2xl font-bold text-primary text-start`}>${productDetails?.salePrice}</span>
+              <span
+                className={`${productDetails?.salePrice > 0 ? "line-through" : ""} text-2xl font-bold text-primary text-start`}
+              >
+                ${productDetails?.salePrice}
+              </span>
             ) : null}
-            <span
-              className="text-2xl font-bold text-muted-foreground"
-            >
+            <span className="text-2xl font-bold text-muted-foreground">
               {productDetails?.price ? `$${productDetails?.price}` : ""}
             </span>
           </div>
@@ -162,7 +158,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
                 onClick={() =>
                   handleAddToCart(
                     productDetails?._id,
-                    productDetails?.totalStock
+                    productDetails?.totalStock,
                   )
                 }
               >
@@ -176,9 +172,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
             <div className="grid gap-6">
               {reviews && reviews.length > 0 ? (
                 reviews.map((reviewItem) => (
-                  <div
-                    key={reviewItem._id}
-                    className="flex gap-4">
+                  <div key={reviewItem._id} className="flex gap-4">
                     <Avatar className="w-10 h-10 border">
                       <AvatarFallback>
                         {reviewItem?.userName[0].toUpperCase()}
@@ -228,7 +222,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
 
 ProductDetailsDialog.propTypes = {
@@ -241,7 +235,7 @@ ProductDetailsDialog.propTypes = {
     description: PropTypes.string,
     salePrice: PropTypes.number,
     price: PropTypes.number.isRequired,
-    totalStock: PropTypes.number.isRequired
+    totalStock: PropTypes.number.isRequired,
   }),
 };
 

@@ -36,7 +36,6 @@ function AuthRegister() {
     });
   }
 
-
   return (
     <div className="container mx-auto w-full max-w-md">
       <div className="text-center mb-8">
@@ -61,7 +60,7 @@ function AuthRegister() {
         onSubmit={onSubmit}
       />
     </div>
-  )
+  );
 }
 
 export default AuthRegister;

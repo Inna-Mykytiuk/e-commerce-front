@@ -11,16 +11,16 @@ export const addReview = createAsyncThunk(
   async (formdata) => {
     const response = await axios.post(
       `${import.meta.env.VITE_API_URL}/api/shop/review/add`,
-      formdata
+      formdata,
     );
 
     return response.data;
-  }
+  },
 );
 
 export const getReviews = createAsyncThunk("/order/getReviews", async (id) => {
   const response = await axios.get(
-    `${import.meta.env.VITE_API_URL}/api/shop/review/${id}`
+    `${import.meta.env.VITE_API_URL}/api/shop/review/${id}`,
   );
 
   return response.data;

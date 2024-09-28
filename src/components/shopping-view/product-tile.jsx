@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Card, CardContent, CardFooter } from "../ui/card";
 import { Button } from "../ui/button";
@@ -10,8 +10,6 @@ function ShoppingProductTile({
   handleGetProductDetails,
   handleAddtoCart,
 }) {
-
-
   return (
     <Card className="w-full max-w-sm mx-auto cursor-pointer shadow-md hover:shadow-custom transition-all ease-in-out">
       <div onClick={() => handleGetProductDetails(product?._id)}>
@@ -47,14 +45,15 @@ function ShoppingProductTile({
           </div>
           <div className="flex justify-between items-center mb-2">
             {product?.salePrice > 0 ? (
-              <span className={`${product?.salePrice > 0 ? "line-through" : ""} text-lg font-semibold text-primary text-start`}>${product?.salePrice}</span>
+              <span
+                className={`${product?.salePrice > 0 ? "line-through" : ""} text-lg font-semibold text-primary text-start`}
+              >
+                ${product?.salePrice}
+              </span>
             ) : null}
-            <span
-              className="text-lg font-bold"
-            >
+            <span className="text-lg font-bold">
               {product?.price ? `$${product?.price}` : ""}
             </span>
-
           </div>
         </CardContent>
       </div>

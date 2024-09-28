@@ -38,7 +38,7 @@ function createSearchParamsHelper(filterParams) {
 function ShoppingListing() {
   const dispatch = useDispatch();
   const { productList, productDetails } = useSelector(
-    (state) => state.shopProducts
+    (state) => state.shopProducts,
   );
   const { cartItems } = useSelector((state) => state.shopCart);
   const { user } = useSelector((state) => state.auth);
@@ -77,8 +77,6 @@ function ShoppingListing() {
     sessionStorage.setItem("filters", JSON.stringify(cpyFilters));
   }
 
-
-
   function handleGetProductDetails(getCurrentProductId) {
     dispatch(fetchProductDetails(getCurrentProductId));
   }
@@ -88,7 +86,7 @@ function ShoppingListing() {
 
     if (getCartItems.length) {
       const indexOfCurrentItem = getCartItems.findIndex(
-        (item) => item.productId === getCurrentProductId
+        (item) => item.productId === getCurrentProductId,
       );
       if (indexOfCurrentItem > -1) {
         const getQuantity = getCartItems[indexOfCurrentItem].quantity;
@@ -107,7 +105,7 @@ function ShoppingListing() {
         userId: user?.id,
         productId: getCurrentProductId,
         quantity: 1,
-      })
+      }),
     ).then((data) => {
       if (data?.payload?.success) {
         dispatch(fetchCartItems(user?.id));
@@ -138,7 +136,7 @@ function ShoppingListing() {
   useEffect(() => {
     if (filters !== null && sort !== null)
       dispatch(
-        fetchAllFilteredProducts({ filterParams: filters, sortParams: sort })
+        fetchAllFilteredProducts({ filterParams: filters, sortParams: sort }),
       );
   }, [dispatch, sort, filters]);
 
@@ -184,14 +182,16 @@ function ShoppingListing() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {productList && productList.length > 0
-            ? productList.slice(0, visibleProducts).map((productItem) => (
-              <ShoppingProductTile
-                key={productItem.id || productItem._id}
-                handleGetProductDetails={handleGetProductDetails}
-                product={productItem}
-                handleAddtoCart={handleAddtoCart}
-              />
-            ))
+            ? productList
+                .slice(0, visibleProducts)
+                .map((productItem) => (
+                  <ShoppingProductTile
+                    key={productItem.id || productItem._id}
+                    handleGetProductDetails={handleGetProductDetails}
+                    product={productItem}
+                    handleAddtoCart={handleAddtoCart}
+                  />
+                ))
             : null}
         </div>
         {visibleProducts < productList.length && (

@@ -8,7 +8,9 @@ function AuthLayout() {
           <h1 className="text-4xl font-extrabold tracking-tight relative py-[80px] px-[80px] backdrop-blur-md">
             Welcome to ECommerce Shop
             <br />
-            <span className="text-white font-light text-lg">`Your Style, Your Choice: Fashion for the Whole Family`</span>
+            <span className="text-white font-light text-lg">
+              `Your Style, Your Choice: Fashion for the Whole Family`
+            </span>
           </h1>
         </div>
       </div>

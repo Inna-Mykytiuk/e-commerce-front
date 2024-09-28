@@ -27,7 +27,9 @@ function PaypalReturnPage() {
   return (
     <Card clsassName="p-10 h-screen flex flex-col justify-center items-center">
       <CardHeader>
-        <CardTitle className="text-4xl text-bold">Processing Payment...Please wait!</CardTitle>
+        <CardTitle className="text-4xl text-bold">
+          Processing Payment...Please wait!
+        </CardTitle>
       </CardHeader>
     </Card>
   );

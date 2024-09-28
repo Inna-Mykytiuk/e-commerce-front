@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
@@ -11,8 +11,6 @@ function AdminProductTile({
   setCurrentEditedId,
   handleDelete,
 }) {
-
-
   return (
     <Card className="w-full max-w-sm mx-auto shadow-md hover:shadow-custom transition-all ease-in-out">
       <div>
@@ -35,14 +33,15 @@ function AdminProductTile({
           </div>
           <div className="flex justify-between items-center mb-2">
             {product?.salePrice > 0 ? (
-              <span className={`${product?.salePrice > 0 ? "line-through" : ""} text-lg font-semibold text-primary text-start`}>${product?.salePrice}</span>
+              <span
+                className={`${product?.salePrice > 0 ? "line-through" : ""} text-lg font-semibold text-primary text-start`}
+              >
+                ${product?.salePrice}
+              </span>
             ) : null}
-            <span
-              className="text-lg font-bold"
-            >
+            <span className="text-lg font-bold">
               {product?.price ? `$${product?.price}` : ""}
             </span>
-
           </div>
         </CardContent>
         <CardFooter className="flex justify-between items-center">

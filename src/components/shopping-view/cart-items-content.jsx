@@ -19,11 +19,11 @@ function UserCartItemsContent({ cartItem }) {
 
       if (getCartItems.length) {
         const indexOfCurrentCartItem = getCartItems.findIndex(
-          (item) => item.productId === getCartItem?.productId
+          (item) => item.productId === getCartItem?.productId,
         );
 
         const getCurrentProductIndex = productList.findIndex(
-          (product) => product._id === getCartItem?.productId
+          (product) => product._id === getCartItem?.productId,
         );
         const getTotalStock = productList[getCurrentProductIndex].totalStock;
 
@@ -49,7 +49,7 @@ function UserCartItemsContent({ cartItem }) {
           typeOfAction === "plus"
             ? getCartItem?.quantity + 1
             : getCartItem?.quantity - 1,
-      })
+      }),
     ).then((data) => {
       if (data?.payload?.success) {
         toast({
@@ -61,7 +61,7 @@ function UserCartItemsContent({ cartItem }) {
 
   function handleCartItemDelete(getCartItem) {
     dispatch(
-      deleteCartItem({ userId: user?.id, productId: getCartItem?.productId })
+      deleteCartItem({ userId: user?.id, productId: getCartItem?.productId }),
     ).then((data) => {
       if (data?.payload?.success) {
         toast({

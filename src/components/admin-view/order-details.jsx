@@ -29,7 +29,7 @@ function AdminOrderDetailsView({ orderDetails }) {
     const { status } = formData;
 
     dispatch(
-      updateOrderStatus({ id: orderDetails?._id, orderStatus: status })
+      updateOrderStatus({ id: orderDetails?._id, orderStatus: status }),
     ).then((data) => {
       if (data?.payload?.success) {
         dispatch(getOrderDetailsForAdmin(orderDetails?._id));
@@ -71,12 +71,13 @@ function AdminOrderDetailsView({ orderDetails }) {
             <p className="font-medium">Order Status</p>
             <Label>
               <Badge
-                className={`py-1 px-3 ${orderDetails?.orderStatus === "confirmed"
-                  ? "bg-green-500"
-                  : orderDetails?.orderStatus === "rejected"
-                    ? "bg-red-600"
-                    : "bg-black"
-                  }`}
+                className={`py-1 px-3 ${
+                  orderDetails?.orderStatus === "confirmed"
+                    ? "bg-green-500"
+                    : orderDetails?.orderStatus === "rejected"
+                      ? "bg-red-600"
+                      : "bg-black"
+                }`}
               >
                 {orderDetails?.orderStatus}
               </Badge>
@@ -90,14 +91,15 @@ function AdminOrderDetailsView({ orderDetails }) {
             <ul className="grid gap-3">
               {orderDetails?.cartItems && orderDetails?.cartItems.length > 0
                 ? orderDetails?.cartItems.map((item) => (
-                  <li
-                    key={item._id}
-                    className="flex items-center justify-between">
-                    <span>Title: {item.title}</span>
-                    <span>Quantity: {item.quantity}</span>
-                    <span>Price: ${item.price}</span>
-                  </li>
-                ))
+                    <li
+                      key={item._id}
+                      className="flex items-center justify-between"
+                    >
+                      <span>Title: {item.title}</span>
+                      <span>Quantity: {item.quantity}</span>
+                      <span>Price: ${item.price}</span>
+                    </li>
+                  ))
                 : null}
             </ul>
           </div>
@@ -157,7 +159,7 @@ AdminOrderDetailsView.propTypes = {
         title: PropTypes.string.isRequired,
         quantity: PropTypes.number.isRequired,
         price: PropTypes.number.isRequired,
-      })
+      }),
     ).isRequired,
     addressInfo: PropTypes.shape({
       address: PropTypes.string.isRequired,

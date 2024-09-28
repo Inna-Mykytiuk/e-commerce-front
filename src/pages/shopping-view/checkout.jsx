@@ -19,14 +19,14 @@ function ShoppingCheckout() {
   const totalCartAmount =
     cartItems && cartItems.items && cartItems.items.length > 0
       ? cartItems.items.reduce(
-        (sum, currentItem) =>
-          sum +
-          (currentItem?.salePrice > 0
-            ? currentItem?.salePrice
-            : currentItem?.price) *
-          currentItem?.quantity,
-        0
-      )
+          (sum, currentItem) =>
+            sum +
+            (currentItem?.salePrice > 0
+              ? currentItem?.salePrice
+              : currentItem?.price) *
+              currentItem?.quantity,
+          0,
+        )
       : 0;
 
   function handleInitiatePaypalPayment() {
@@ -104,10 +104,8 @@ function ShoppingCheckout() {
         <div className="flex flex-col gap-4">
           {cartItems && cartItems.items && cartItems.items.length > 0
             ? cartItems.items.map((item) => (
-              <UserCartItemsContent
-                key={item.productId}
-                cartItem={item} />
-            ))
+                <UserCartItemsContent key={item.productId} cartItem={item} />
+              ))
             : null}
           <div className="mt-8 space-y-4">
             <div className="flex justify-between">

@@ -14,11 +14,11 @@ export const createNewOrder = createAsyncThunk(
   async (orderData) => {
     const response = await axios.post(
       `${import.meta.env.VITE_API_URL}/api/shop/order/create`,
-      orderData
+      orderData,
     );
 
     return response.data;
-  }
+  },
 );
 
 export const capturePayment = createAsyncThunk(
@@ -30,33 +30,33 @@ export const capturePayment = createAsyncThunk(
         paymentId,
         payerId,
         orderId,
-      }
+      },
     );
 
     return response.data;
-  }
+  },
 );
 
 export const getAllOrdersByUserId = createAsyncThunk(
   "/order/getAllOrdersByUserId",
   async (userId) => {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/shop/order/list/${userId}`
+      `${import.meta.env.VITE_API_URL}/api/shop/order/list/${userId}`,
     );
 
     return response.data;
-  }
+  },
 );
 
 export const getOrderDetails = createAsyncThunk(
   "/order/getOrderDetails",
   async (id) => {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/shop/order/details/${id}`
+      `${import.meta.env.VITE_API_URL}/api/shop/order/details/${id}`,
     );
 
     return response.data;
-  }
+  },
 );
 
 const shoppingOrderSlice = createSlice({
@@ -78,7 +78,7 @@ const shoppingOrderSlice = createSlice({
         state.orderId = action.payload.orderId;
         sessionStorage.setItem(
           "currentOrderId",
-          JSON.stringify(action.payload.orderId)
+          JSON.stringify(action.payload.orderId),
         );
       })
       .addCase(createNewOrder.rejected, (state) => {

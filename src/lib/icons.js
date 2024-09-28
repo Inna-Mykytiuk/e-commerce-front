@@ -9,12 +9,9 @@ import { AiFillInstagram } from "react-icons/ai";
 
 import {
   BabyIcon,
-  BadgeCheck,
   Footprints,
   ShirtIcon,
   WatchIcon,
-  LayoutDashboard,
-  ShoppingBasket,
 } from "lucide-react";
 
 import { IoWomanOutline } from "react-icons/io5";
@@ -30,7 +27,6 @@ export const iconComponents = {
   FaGithubAlt,
   FaTelegramPlane,
 };
-
 
 export const categoriesWithIcon = [
   { id: "men", label: "Men", icon: ShirtIcon },
@@ -49,23 +45,4 @@ export const brandsWithIcon = [
   { id: "h&m", label: "H&M", icon: IoShirtOutline },
 ];
 
-export const adminSidebarMenuItems = [
-  {
-    id: "dashboard",
-    label: "Dashboard",
-    path: "/admin/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    id: "products",
-    label: "Products",
-    path: "/admin/products",
-    icon: ShoppingBasket,
-  },
-  {
-    id: "orders",
-    label: "Orders",
-    path: "/admin/orders",
-    icon: BadgeCheck,
-  },
-];
+

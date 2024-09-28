@@ -10,11 +10,11 @@ export const getFeatureImages = createAsyncThunk(
   "/order/getFeatureImages",
   async () => {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/common/feature/get`
+      `${import.meta.env.VITE_API_URL}/api/common/feature/get`,
     );
 
     return response.data;
-  }
+  },
 );
 
 export const addFeatureImage = createAsyncThunk(
@@ -22,11 +22,11 @@ export const addFeatureImage = createAsyncThunk(
   async ({ image, title }) => {
     const response = await axios.post(
       `${import.meta.env.VITE_API_URL}/api/common/feature/add`,
-      { image, title }
+      { image, title },
     );
 
     return response.data;
-  }
+  },
 );
 
 const commonSlice = createSlice({
