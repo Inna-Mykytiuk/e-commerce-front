@@ -54,14 +54,20 @@ export default function Footer() {
                 <FaLocationDot />
                 {location}
               </p>
-              <p className="mb-4 flex items-center gap-1 text-xs text-white">
+              <a
+                href={`mailto:${email}`}
+                className="mb-4 flex items-center gap-1 text-xs text-white"
+              >
                 <MdEmail />
                 {email}
-              </p>
-              <p className="flex items-center gap-1 text-xs text-white">
+              </a>
+              <a
+                href={`tel:${phoneNumber}`}
+                className="flex items-center gap-1 text-xs text-white"
+              >
                 <FaPhoneAlt />
                 {phoneNumber}
-              </p>
+              </a>
             </div>
           </div>
         </div>
